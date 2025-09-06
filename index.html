@@ -5,170 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lial's Portfolio</title>
   <style>
+    /* 🌈 Root Variables */
     :root {
-      --bg: #f8fafc;
-      --text: #333;
-      --card-bg: #fff;
-      --nav-bg: #1e293b;
-      --footer-bg: #1e293b;
+      --bg: linear-gradient(135deg, #3b82f6, #06b6d4);
+      --text: #1f2937;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --blur: 12px;
     }
     body.dark {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --card-bg: #1e293b;
-      --nav-bg: #0f172a;
-      --footer-bg: #0f172a;
+      --bg: linear-gradient(135deg, #0f172a, #1e293b);
+      --text: #f1f5f9;
+      --card-bg: rgba(0, 0, 0, 0.4);
+      --blur: 14px;
     }
 
+    /* 🌎 Base */
+    * { box-sizing: border-box; scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: background 0.3s, color 0.3s;
+      transition: 0.3s;
     }
 
     /* 🔹 Navbar */
     nav {
-      background: var(--nav-bg);
-      color: #fff;
+      position: sticky;
+      top: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      padding: 16px 40px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    nav .logo {
-      font-weight: bold;
-      font-size: 18px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li a {
-      color: #fff;
+    nav .logo { font-weight: bold; font-size: 20px; }
+    nav ul { display: flex; gap: 20px; margin: 0; padding: 0; list-style: none; }
+    nav a {
       text-decoration: none;
-      font-size: 15px;
-      transition: color 0.3s;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
     }
-    nav ul li a:hover {
-      color: #38bdf8;
-    }
+    nav a:hover { color: #facc15; }
     .dark-toggle {
-      cursor: pointer;
-      background: #38bdf8;
-      color: #fff;
+      background: #facc15;
       border: none;
       padding: 6px 12px;
       border-radius: 6px;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-    .dark-toggle:hover {
-      background: #0891b2;
+      cursor: pointer;
     }
 
-    /* 🔹 Header */
-    header {
+    /* 🔹 Hero */
+    .hero {
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to right, #1e293b, #334155);
+      padding: 100px 20px;
       color: white;
     }
-    header h1 {
-      font-size: 36px;
-      margin: 0;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #cbd5e1;
+    .hero h1 { font-size: 48px; margin: 0; }
+    .hero p { font-size: 20px; margin: 15px 0 30px; }
+    .hero a {
+      background: #facc15;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    /* 🔹 Projects Grid */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
+    /* 🔹 Section */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    /* 🔹 Cards */
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .card h2 {
-      margin-top: 0;
-      font-size: 18px;
-      color: #1e293b;
-    }
-    body.dark .card h2 {
-      color: #e2e8f0;
-    }
-    .card iframe {
-      width: 100%;
-      border-radius: 8px;
-      margin: 15px 0;
-    }
-    .links {
-      display: flex;
-      gap: 12px;
-    }
-    .links a {
-      background: #1e293b;
       color: white;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-8px); }
+    .card h3 { margin-top: 0; }
+
+    /* 🔹 Contact */
+    .contact { text-align: center; }
+    .contact a {
+      margin: 10px;
+      color: #facc15;
+      font-size: 18px;
       text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-    .links a:hover {
-      background: #334155;
-    }
-    .links a.demo {
-      background: #06b6d4;
-    }
-    .links a.demo:hover {
-      background: #0891b2;
     }
 
     /* 🔹 Footer */
     footer {
       text-align: center;
-      background: var(--footer-bg);
-      color: #cbd5e1;
-      padding: 25px 20px;
-      margin-top: 40px;
-      transition: background 0.3s;
-    }
-    footer .socials {
-      margin-bottom: 10px;
-    }
-    footer .socials a {
-      margin: 0 10px;
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-    footer .socials a:hover {
-      color: #38bdf8;
+      padding: 20px;
+      color: white;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -178,54 +131,161 @@
     <div class="logo">Lial Awwad</div>
     <ul>
       <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+    <button class="dark-toggle" onclick="toggleDark()">🌙</button>
   </nav>
 
-  <!-- 🔹 Header -->
-  <header id="about">
-    <h1>👩‍💻 Lial's Portfolio</h1>
+  <!-- 🔹 Hero -->
+  <div class="hero">
+    <h1>🚀 Hi, I'm Lial</h1>
     <p>Full Stack Developer | React | .NET | SQL</p>
-  </header>
+    <a href="#contact">Contact Me</a>
+  </div>
 
-  <!-- 🔹 Projects -->
-  <section class="projects" id="projects">
+  <!-- 🔹 About -->
+  <section id="about">
+    <h2>About Me</h2>
     <div class="card">
-      <h2>📊 Daily Inventory Dashboard</h2>
-      <iframe height="180" src="https://www.youtube.com/embed/tZTcO3Nre4E" frameborder="0" allowfullscreen></iframe>
-      <div class="links">
-        <a href="https://github.com/lialyAdam/dashboard" target="_blank">GitHub</a>
-        <a href="#" class="demo">Live Demo</a>
-      </div>
+      <p>
+        I’m a Full Stack Developer passionate about creating beautiful, scalable, and efficient web applications.
+        I enjoy solving problems and bringing ideas to life with clean code.
+      </p>
+    </div>
+  </section>
+
+  <!-- 🔹 Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>⚛ React</h3></div>
+      <div class="card"><h3>🌐 ASP.NET</h3></div>
+      <div class="card"><h3>🗄 SQL</h3></div>
+      <div class="card"><h3>📱 Responsive Design</h3></div>
+      <div class="card"><h3>☁ Azure</h3></div>
+      <div class="card"><h3>🔧 Git & GitHub</h3></div>
+    </div>
+  </section>
+
+<!-- 🔹 Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    
+    <!-- 1. E-Commerce Website -->
+    <div class="card">
+      <h3>🛒 E-Commerce Website</h3>
+      <p>Online clothing store with product browsing, filtering, and secure admin panel. <strong>Stack:</strong> ASP.NET, SQL Server, HTML, CSS, JavaScript</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
+      <p><a href="https://github.com/lialyAdam/Ecommerce" target="_blank">GitHub</a></p>
     </div>
 
+    <!-- 2. Deer Balak Alena – AI Emergency Management -->
     <div class="card">
-      <h2>🛒 E-Commerce Website</h2>
-      <iframe height="180" src="https://www.youtube.com/embed/7QmDrujDZO8" frameborder="0" allowfullscreen></iframe>
-      <div class="links">
-        <a href="https://github.com/lialyAdam/ecommerce" target="_blank">GitHub</a>
-      </div>
+      <h3>🚨 Deer Balak Alena – AI Emergency Management</h3>
+      <p>Smart emergency system with real-time alerts, incident reporting, account verification, and misinformation detection. Includes Admin Dashboard and AI credibility scoring.</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/krhpOGqY7tE"></iframe>
+      <p><a href="https://github.com/lialyAdam/DeerBalak" target="_blank">GitHub</a></p>
     </div>
 
+    <!-- 3. AI-Powered Name Validation Service -->
     <div class="card">
-      <h2>⚡ SignalR Emergency System</h2>
-      <iframe height="180" src="https://www.youtube.com/embed/M1obF-Ac0DI" frameborder="0" allowfullscreen></iframe>
-      <div class="links">
-        <a href="https://github.com/lialyAdam/emergency" target="_blank">GitHub</a>
-      </div>
+      <h3>🤖 AI Name Validation Service</h3>
+      <p>Validates personal names using a GPT-4 AI model, scoring 0-100 for authenticity and providing explanations. Enhances user trust and reduces fake accounts.</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
+      <p><a href="https://github.com/lialyAdam/AI-Powered-Name-Validation-Service/tree/main" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 4. SupplySight Dashboard -->
+    <div class="card">
+      <h3>📊 SupplySight Dashboard</h3>
+      <p>Daily Inventory Dashboard mimicking supply chain workflows with interactive charts, KPI cards, filters, and side-drawer product details. <strong>Tech:</strong> React, Tailwind, Apollo GraphQL, Recharts</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
+      <p><a href="https://github.com/lialyAdam/lial-dashboard" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 5. TraceVision Pro 4.0 -->
+    <div class="card">
+      <h3>📊 TraceVision Pro 4.0 – Compute Traces</h3>
+      <p>Real-time compute traces tracker with speed, odometer, CSV export, and interactive charts. <strong>Tech:</strong> React, TypeScript, Python</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
+      <p><a href="https://github.com/lialyAdam/compute-traces-dashboard" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 6. Image to ZIP + CSV Converter -->
+    <div class="card">
+      <h3>🖼️ Image to ZIP + CSV Converter</h3>
+      <p>Upload multiple images, download as a single ZIP including results.csv metadata. <strong>Tech:</strong> React, Python, CSV, ZIP Compression</p>
+      <p><a href="https://github.com/lialyAdam/image-zip-csv" target="_blank">GitHub</a></p>
+      <p><a href="https://github.com/DreamLayer-AI/DreamLayer/pull/93" target="_blank">Pull Request</a></p>
+    </div>
+
+    <!-- 7. Excel to SQL Converter -->
+    <div class="card">
+      <h3>📥 Excel to SQL Converter</h3>
+      <p>Upload Excel files to convert content into SQL-ready format and insert into SQL Server database. <strong>Tech:</strong> ASP.NET Core, ADO.NET</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/Ernjn_1Z8qI"></iframe>
+      <p><a href="https://github.com/lialyAdam/ExcelToSQLConverter" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 8. Web3.js Wallet -->
+    <div class="card">
+      <h3>💰 Web3.js Wallet – ETH Send & Receive</h3>
+      <p>Ethereum wallet interface to send/receive ETH on testnet. <strong>Tech:</strong> Web3.js, JavaScript, HTML</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/_Yrb1nkhnfc"></iframe>
+      <p><a href="https://github.com/lialyAdam/-EmploiToday-defiguard-Wallet" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 9. Tribe Chat App -->
+    <div class="card">
+      <h3>💬 Tribe Chat App – React Native</h3>
+      <p>Single-room chat app with grouped messages, emoji reactions, image attachments, offline storage, and real-time updates. <strong>Tech:</strong> React Native, Expo, Zustand</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/cJfGTUhtT6A"></iframe>
+      <p><a href="https://github.com/lialyAdam/tribe-chat-app" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 10. Items-Store -->
+    <div class="card">
+      <h3>📦 Items-Store – Inventory Management</h3>
+      <p>ASP.NET inventory system for electronics with CRUD operations and dynamic dashboard. <strong>Tech:</strong> ASP.NET, SQL Server, ADO.NET</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/uFazzxp0SAY"></iframe>
+      <p><a href="https://github.com/lialyAdam/Item-Management-Dashboard" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 11. SPA Center Website -->
+    <div class="card">
+      <h3>🧖‍♀️ SPA Center Website – React</h3>
+      <p>Modern responsive React website for a spa with booking, gallery, and testimonials. <strong>Tech:</strong> React</p>
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/zt80NHNKMJQ"></iframe>
+      <p><a href="https://github.com/lialyAdam/Spa_Project" target="_blank">GitHub</a></p>
+    </div>
+
+    <!-- 12. Pattern Dithering -->
+    <div class="card">
+      <h3>🖼️ Pattern Dithering with Parallel Processing</h3>
+      <p>Convert grayscale images to 1-bit B/W using serial & Pthreads parallel implementations. <strong>Tech:</strong> C, Pthreads</p>
+      <p><a href="https://github.com/lialyAdam/parallel" target="_blank">GitHub</a></p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- 🔹 Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:lial@example.com">📧 Email</a>
+      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/lialyAdam" target="_blank">🐙 GitHub</a>
     </div>
   </section>
 
   <!-- 🔹 Footer -->
-  <footer id="contact">
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">LinkedIn</a>
-      <a href="https://github.com/lialyAdam" target="_blank">GitHub</a>
-      <a href="mailto:lial@example.com">Email</a>
-    </div>
-    <p>© 2025 Lial Awwad | Built with ❤️</p>
+  <footer>
+    <p>© 2025 Lial Awwad | Built with 💙</p>
   </footer>
 
   <script>
@@ -233,9 +293,18 @@
       document.body.classList.toggle("dark");
       const btn = document.querySelector(".dark-toggle");
       if (document.body.classList.contains("dark")) {
-        btn.textContent = "🌞 Light";
+        btn.textContent = "🌞";
+        localStorage.setItem("theme", "dark");
       } else {
-        btn.textContent = "🌙 Dark";
+        btn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+    }
+    window.onload = () => {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark");
+        document.querySelector(".dark-toggle").textContent = "🌞";
       }
     }
   </script>
