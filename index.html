@@ -2,186 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lial Adam - Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lial's Portfolio</title>
   <style>
+    :root {
+      --bg: #f8fafc;
+      --text: #333;
+      --card-bg: #fff;
+      --nav-bg: #1e293b;
+      --footer-bg: #1e293b;
+    }
+    body.dark {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --card-bg: #1e293b;
+      --nav-bg: #0f172a;
+      --footer-bg: #0f172a;
+    }
+
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fef8f1;
-      color: #4a2c1f;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* 🔹 Navbar */
+    nav {
+      background: var(--nav-bg);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    nav .logo {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
       margin: 0;
       padding: 0;
-      text-align: center;
     }
-    .container {
-      margin-top: 5%;
-    }
-    h1 {
-      font-size: 48px;
-    }
-    h1 span {
-      color: #a14c2e;
-    }
-    h2 {
-      font-size: 36px;
-      color: #a14c2e;
-      margin-top: 50px;
-    }
-    p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: 15px auto;
-      line-height: 1.6;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
+    nav ul li a {
+      color: #fff;
       text-decoration: none;
-      background-color: #a14c2e;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+    .dark-toggle {
+      cursor: pointer;
+      background: #38bdf8;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .dark-toggle:hover {
+      background: #0891b2;
+    }
+
+    /* 🔹 Header */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #1e293b, #334155);
       color: white;
-      border-radius: 5px;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #cbd5e1;
+    }
+
+    /* 🔹 Projects Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
     }
     .card {
-      border: 1px solid #ccc;
+      background: var(--card-bg);
       border-radius: 12px;
-      padding: 30px 20px;
-      margin: 40px auto;
-      max-width: 700px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-    .card h3 {
-      text-align: center;
-      color: #a14c2e;
-    }
-    .card p {
-      font-size: 16px;
-      color: #333;
-    }
-    iframe {
-      display: block;
-      margin: 15px auto;
-      border-radius: 8px;
-    }
-    footer {
-      margin-top: 50px;
       padding: 20px;
-      background: #4a2c1f;
-      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     }
-    footer a {
-      color: #ffd7c2;
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #1e293b;
+    }
+    body.dark .card h2 {
+      color: #e2e8f0;
+    }
+    .card iframe {
+      width: 100%;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .links {
+      display: flex;
+      gap: 12px;
+    }
+    .links a {
+      background: #1e293b;
+      color: white;
       text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #334155;
+    }
+    .links a.demo {
+      background: #06b6d4;
+    }
+    .links a.demo:hover {
+      background: #0891b2;
+    }
+
+    /* 🔹 Footer */
+    footer {
+      text-align: center;
+      background: var(--footer-bg);
+      color: #cbd5e1;
+      padding: 25px 20px;
+      margin-top: 40px;
+      transition: background 0.3s;
+    }
+    footer .socials {
+      margin-bottom: 10px;
+    }
+    footer .socials a {
       margin: 0 10px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    footer .socials a:hover {
+      color: #38bdf8;
     }
   </style>
 </head>
 <body>
+  <!-- 🔹 Navbar -->
+  <nav>
+    <div class="logo">Lial Awwad</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+  </nav>
 
-  <!-- Hero Section -->
-  <div class="container">
-    <h1>Hello, I am <span>Lial Adam</span>!</h1>
-    <p>
-      I’m a Full Stack Developer with hands-on experience in building smart, scalable web applications and software projects using ASP.NET, React, and modern technologies. 
-      I turn ideas into real-world solutions by developing across the full stack — frontend, backend, databases, and AI features.
-    </p>
-    <a href="mailto:lial.awwad@example.com" class="btn">📩 Hire me</a>
-  </div>
+  <!-- 🔹 Header -->
+  <header id="about">
+    <h1>👩‍💻 Lial's Portfolio</h1>
+    <p>Full Stack Developer | React | .NET | SQL</p>
+  </header>
 
-  <!-- Projects Section -->
-  <div class="container">
-    <h2>My Projects</h2>
-
-    <!-- E-Commerce Website -->
+  <!-- 🔹 Projects -->
+  <section class="projects" id="projects">
     <div class="card">
-      <h3>🛒 E-Commerce Website</h3>
-      <p>Built a complete online store with product browsing, shopping cart, and admin dashboard for management.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/7QmDrujDZO8" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/ecommerce" target="_blank">🔗 GitHub Repo</a></p>
+      <h2>📊 Daily Inventory Dashboard</h2>
+      <iframe height="180" src="https://www.youtube.com/embed/tZTcO3Nre4E" frameborder="0" allowfullscreen></iframe>
+      <div class="links">
+        <a href="https://github.com/lialyAdam/dashboard" target="_blank">GitHub</a>
+        <a href="#" class="demo">Live Demo</a>
+      </div>
     </div>
 
-    <!-- Deer Balak Alena -->
     <div class="card">
-      <h3>⚡ Deer Balak Alena – Emergency Management System</h3>
-      <p>An interactive emergency reporting and alerting system with real-time notifications using SignalR and role-based user management.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/M1obF-Ac0DI" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/emergency" target="_blank">🔗 GitHub Repo</a></p>
+      <h2>🛒 E-Commerce Website</h2>
+      <iframe height="180" src="https://www.youtube.com/embed/7QmDrujDZO8" frameborder="0" allowfullscreen></iframe>
+      <div class="links">
+        <a href="https://github.com/lialyAdam/ecommerce" target="_blank">GitHub</a>
+      </div>
     </div>
 
-    <!-- AI Name Validation -->
     <div class="card">
-      <h3>🤖 AI-Powered Name Validation</h3>
-      <p>Developed an AI model to score and validate organization names (0–4) instead of using regex rules.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/SR-8KNeJ3SI" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/ai-validation" target="_blank">🔗 GitHub Repo</a></p>
+      <h2>⚡ SignalR Emergency System</h2>
+      <iframe height="180" src="https://www.youtube.com/embed/M1obF-Ac0DI" frameborder="0" allowfullscreen></iframe>
+      <div class="links">
+        <a href="https://github.com/lialyAdam/emergency" target="_blank">GitHub</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Daily Inventory Dashboard -->
-    <div class="card">
-      <h3>📊 Daily Inventory Dashboard</h3>
-      <p>A polished dashboard simulating real supply chain workflows with KPI cards, charts, filters, and product tables.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/tZTcO3Nre4E" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/dashboard" target="_blank">🔗 GitHub Repo</a></p>
+  <!-- 🔹 Footer -->
+  <footer id="contact">
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">LinkedIn</a>
+      <a href="https://github.com/lialyAdam" target="_blank">GitHub</a>
+      <a href="mailto:lial@example.com">Email</a>
     </div>
-
-    <!-- Items-Store -->
-    <div class="card">
-      <h3>📦 Items Store System</h3>
-      <p>Simple inventory management system for tracking items, adding and editing product details.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/LQ6zG8BXdJY" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/items-store" target="_blank">🔗 GitHub Repo</a></p>
-    </div>
-
-    <!-- AdminMart -->
-    <div class="card">
-      <h3>📋 AdminMart – Admin Dashboard</h3>
-      <p>Developed a professional admin dashboard to manage data, products, and monitor activity with responsive UI.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/VEZV5UVOmjc" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/adminmart" target="_blank">🔗 GitHub Repo</a></p>
-    </div>
-
-    <!-- Excel to SQL Converter -->
-    <div class="card">
-      <h3>📑 Excel to SQL Converter</h3>
-      <p>A web tool to transform Excel files into executable SQL commands for database operations.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/6mf1NN3jNsU" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/excel-to-sql" target="_blank">🔗 GitHub Repo</a></p>
-    </div>
-
-    <!-- SPA Center Website -->
-    <div class="card">
-      <h3>💆 SPA Center Website</h3>
-      <p>Built a promotional website for a SPA center using React with a clean modern design.</p>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/33R-4clSP9E" frameborder="0" allowfullscreen></iframe>
-      <p><a href="https://github.com/lialyAdam/spa-center" target="_blank">🔗 GitHub Repo</a></p>
-    </div>
-  </div>
-
-  <!-- Skills Section -->
-  <div class="container">
-    <h2>Skills</h2>
-    <p><strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap, React, React Native, Expo, Zustand</p>
-    <p><strong>Backend:</strong> ASP.NET, C#, ADO.NET, Entity Framework</p>
-    <p><strong>Databases:</strong> SQL Server Management, relational design & queries</p>
-    <p><strong>Other:</strong> SignalR, OpenMP, Pthreads, AI Models, Web APIs, Git & GitHub, Azure Deployment</p>
-  </div>
-
-  <!-- Contact Section -->
-  <div class="container">
-    <h2>Contact Me</h2>
-    <p>📧 Email: <a href="mailto:lial.awwad@example.com">lial.awwad@example.com</a></p>
-    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">linkedin.com/in/lial-awwad</a></p>
-    <p>💻 GitHub: <a href="https://github.com/lialyAdam" target="_blank">github.com/lialyAdam</a></p>
-    <p>🌐 Portfolio: <a href="https://lialyadam.github.io/portfolio" target="_blank">lialyadam.github.io/portfolio</a></p>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Lial Adam | Full Stack Developer</p>
+    <p>© 2025 Lial Awwad | Built with ❤️</p>
   </footer>
 
+  <script>
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".dark-toggle");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "🌞 Light";
+      } else {
+        btn.textContent = "🌙 Dark";
+      }
+    }
+  </script>
 </body>
 </html>
