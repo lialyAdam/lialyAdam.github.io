@@ -6,9 +6,8 @@
   <title>Lial's Portfolio</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
       background: #f8fafc;
       color: #333;
     }
@@ -24,13 +23,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-
     nav .logo {
-      font-size: 20px;
       font-weight: bold;
+      font-size: 18px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -38,112 +36,104 @@
       margin: 0;
       padding: 0;
     }
-
     nav ul li a {
       color: #fff;
       text-decoration: none;
       font-size: 15px;
       transition: color 0.3s;
     }
-
     nav ul li a:hover {
       color: #38bdf8;
     }
 
-    /* 🔹 Header Section */
+    /* 🔹 Header */
     header {
       text-align: center;
       padding: 60px 20px;
       background: linear-gradient(to right, #1e293b, #334155);
-      color: #fff;
+      color: white;
     }
-
     header h1 {
-      margin: 0;
       font-size: 36px;
+      margin: 0;
     }
-
     header p {
       margin-top: 10px;
       font-size: 18px;
       color: #cbd5e1;
     }
 
-    /* 🔹 Projects Section */
+    /* 🔹 Projects Grid */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      padding: 40px;
       max-width: 1200px;
       margin: auto;
+      padding: 40px 20px;
     }
-
     .card {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
-
     .card h2 {
       margin-top: 0;
-      font-size: 20px;
+      font-size: 18px;
       color: #1e293b;
     }
-
     .card iframe {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 15px 0;
     }
-
     .links {
       display: flex;
       gap: 12px;
     }
-
     .links a {
-      text-decoration: none;
       background: #1e293b;
       color: white;
+      text-decoration: none;
       padding: 8px 14px;
       border-radius: 8px;
       font-size: 14px;
       transition: background 0.3s;
     }
-
     .links a:hover {
       background: #334155;
+    }
+    .links a.demo {
+      background: #06b6d4;
+    }
+    .links a.demo:hover {
+      background: #0891b2;
     }
 
     /* 🔹 Footer */
     footer {
       text-align: center;
-      padding: 30px 20px;
       background: #1e293b;
       color: #cbd5e1;
-      margin-top: 50px;
+      padding: 25px 20px;
+      margin-top: 40px;
     }
-
     footer .socials {
       margin-bottom: 10px;
     }
-
     footer .socials a {
       margin: 0 10px;
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
       transition: color 0.3s;
     }
-
     footer .socials a:hover {
       color: #38bdf8;
     }
@@ -162,7 +152,7 @@
 
   <!-- 🔹 Header -->
   <header id="about">
-    <h1>👩‍💻 Welcome to My Portfolio</h1>
+    <h1>👩‍💻 Lial's Portfolio</h1>
     <p>Full Stack Developer | React | .NET | SQL</p>
   </header>
 
@@ -170,26 +160,26 @@
   <section class="projects" id="projects">
     <div class="card">
       <h2>📊 Daily Inventory Dashboard</h2>
-      <iframe width="100%" height="180" src="https://www.youtube.com/embed/tZTcO3Nre4E" frameborder="0" allowfullscreen></iframe>
+      <iframe height="180" src="https://www.youtube.com/embed/tZTcO3Nre4E" frameborder="0" allowfullscreen></iframe>
       <div class="links">
-        <a href="https://github.com/lialyAdam/dashboard">GitHub</a>
-        <a href="#">Live Demo</a>
+        <a href="https://github.com/lialyAdam/dashboard" target="_blank">GitHub</a>
+        <a href="#" class="demo">Live Demo</a>
       </div>
     </div>
 
     <div class="card">
       <h2>🛒 E-Commerce Website</h2>
-      <iframe width="100%" height="180" src="https://www.youtube.com/embed/7QmDrujDZO8" frameborder="0" allowfullscreen></iframe>
+      <iframe height="180" src="https://www.youtube.com/embed/7QmDrujDZO8" frameborder="0" allowfullscreen></iframe>
       <div class="links">
-        <a href="https://github.com/lialyAdam/ecommerce">GitHub</a>
+        <a href="https://github.com/lialyAdam/ecommerce" target="_blank">GitHub</a>
       </div>
     </div>
 
     <div class="card">
       <h2>⚡ SignalR Emergency System</h2>
-      <iframe width="100%" height="180" src="https://www.youtube.com/embed/M1obF-Ac0DI" frameborder="0" allowfullscreen></iframe>
+      <iframe height="180" src="https://www.youtube.com/embed/M1obF-Ac0DI" frameborder="0" allowfullscreen></iframe>
       <div class="links">
-        <a href="https://github.com/lialyAdam/emergency">GitHub</a>
+        <a href="https://github.com/lialyAdam/emergency" target="_blank">GitHub</a>
       </div>
     </div>
   </section>
@@ -197,8 +187,8 @@
   <!-- 🔹 Footer -->
   <footer id="contact">
     <div class="socials">
-      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/lialyAdam" target="_blank">GitHub</a> |
+      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">LinkedIn</a>
+      <a href="https://github.com/lialyAdam" target="_blank">GitHub</a>
       <a href="mailto:lial@example.com">Email</a>
     </div>
     <p>© 2025 Lial Awwad | Built with ❤️</p>
