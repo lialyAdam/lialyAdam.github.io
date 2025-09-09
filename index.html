@@ -6,7 +6,6 @@
 <title>Lial's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* 🌌 Root Colors */
   :root {
     --bg: #0f1117;
     --text: #e5e7eb;
@@ -15,320 +14,299 @@
     --radius: 1rem;
     --transition: 0.4s ease;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  header {
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background: rgba(15,17,23,0.9);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-  }
-  header h1 {
-    font-size: 1.6rem;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-  }
-  nav a {
-    margin-left: 2rem;
-    text-decoration: none;
-    color: #cbd5e1;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  nav a:hover { color: #fff; }
-
-  .hero {
-    text-align: center;
-    padding: 8rem 2rem 6rem;
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-  }
-  .hero h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    color: #94a3b8;
-  }
-
-  .projects {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-  }
-
-  .card {
-    position: relative;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform var(--transition), border-color var(--transition);
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, rgba(6,182,212,0.3), rgba(59,130,246,0.3), rgba(147,51,234,0.3));
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 0;
-  }
-  .card:hover::before { opacity: 1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { padding: 1.5rem 3rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background: rgba(15,17,23,0.9); backdrop-filter: blur(10px); z-index:100;}
+  header h1 { font-size:1.6rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight:700; }
+  nav a { margin-left:2rem; text-decoration:none; color:#cbd5e1; font-weight:500; transition:color 0.3s;}
+  nav a:hover { color:#fff; }
+  .hero { text-align:center; padding:8rem 2rem 6rem; animation: fadeInUp 1s ease forwards; opacity:0; }
+  .hero h2 { font-size:3rem; font-weight:700; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom:1rem; }
+  .hero p { max-width:700px; margin:0 auto; font-size:1.1rem; color:#94a3b8; }
+  .projects { padding:4rem 2rem; max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2.5rem; }
+  .card { position: relative; background: var(--card-bg); border-radius: var(--radius); padding:1.5rem; backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; transition: transform var(--transition), border-color var(--transition); animation: fadeInUp 1s ease forwards; opacity:0; }
+  .card::before { content:''; position:absolute; inset:0; background:linear-gradient(120deg, rgba(6,182,212,0.3), rgba(59,130,246,0.3), rgba(147,51,234,0.3)); opacity:0; transition:opacity 0.5s ease; z-index:0;}
+  .card:hover::before { opacity:1; }
   .card:hover { transform: translateY(-10px); border-color: #3b82f6; }
-
-  .card h3, .card p, .card a { position: relative; z-index: 1; }
-  .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #fff; }
-  .card p { color: #9ca3af; font-size: 0.95rem; margin-bottom: 1rem; }
-  .card a { text-decoration: none; color: #06b6d4; font-weight: 600; transition: color 0.3s; }
-  .card a:hover { color: #3b82f6; }
-
-  .card iframe {
-    width: 100%;
-    height: 140px;
-    border-radius: 0.5rem;
-    border: none;
-    display: block;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease;
-  }
+  .card h3, .card p, .card a { position:relative; z-index:1; }
+  .card h3 { font-size:1.3rem; margin-bottom:0.8rem; color:#fff; }
+  .card p { color:#9ca3af; font-size:0.95rem; margin-bottom:1rem; }
+  .card a { text-decoration:none; color:#06b6d4; font-weight:600; transition: color 0.3s; }
+  .card a:hover { color:#3b82f6; }
+  .card iframe { width:100%; height:140px; border-radius:0.5rem; border:none; display:block; position:relative; z-index:1; transition: transform 0.3s ease;}
   .card:hover iframe { transform: scale(1.05); }
+  .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:2rem; }
+  .contact a { text-decoration:none; color:#06b6d4; font-weight:600; background:rgba(255,255,255,0.05); padding:0.8rem 1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px); transition: transform 0.3s ease, color 0.3s ease;}
+  .contact a:hover { transform: translateY(-5px); color:#3b82f6; }
+  footer { text-align:center; padding:2rem; font-size:0.9rem; color:#64748b; margin-top:4rem;}
+  @keyframes fadeInUp { 0% { opacity:0; transform:translateY(20px); } 100% { opacity:1; transform:translateY(0);} }
+  @media(max-width:768px){ header { flex-direction:column; align-items:flex-start;} nav{margin-top:1rem;} }
 
-  .contact {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-  .contact a {
-    text-decoration: none;
-    color: #06b6d4;
-    font-weight: 600;
-    background: rgba(255,255,255,0.05);
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius);
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  .contact a:hover { transform: translateY(-5px); color: #3b82f6; }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-top: 4rem;
-  }
-
-  @keyframes fadeInUp { 0% { opacity:0; transform: translateY(20px);} 100% { opacity:1; transform:translateY(0);} }
-
-  @media(max-width:768px){
-    header { flex-direction: column; align-items: flex-start; }
-    nav { margin-top: 1rem; }
-  }
+  /* Details page styles */
+  .project-details { display:none; padding:4rem 2rem; max-width:900px; margin:auto; background: var(--card-bg); border-radius: var(--radius); backdrop-filter: blur(12px); }
+  .project-details h2 { font-size:2rem; margin-bottom:1rem; background: var(--accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .project-details p { margin-bottom:1rem; }
+  .back-btn { display:inline-block; margin-top:1rem; padding:0.5rem 1rem; border-radius:var(--radius); background: #3b82f6; color:#fff; text-decoration:none; cursor:pointer; transition: background 0.3s; }
+  .back-btn:hover { background:#06b6d4; }
 </style>
 </head>
 <body>
-  <header>
-    <h1>Lial's Portfolio</h1>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <h1>Lial's Portfolio</h1>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h2>Hi, I'm Lial 👋</h2>
-    <p>
-      A passionate Software Engineer building modern web and mobile applications. 
-      I love turning ideas into polished digital experiences.
-    </p>
-  </section>
-
+<section class="hero">
+  <h2>Hi, I'm Lial 👋</h2>
+  <p>A passionate Software Engineer building modern web and mobile applications. I love turning ideas into polished digital experiences.</p>
+</section>
 <section id="projects" class="projects">
-  <div class="card">
+  <!-- Projects Cards -->
+  <div class="card" onclick="showProject('ecommerce')">
     <h3>🛒 E-Commerce Website</h3>
     <p>Online clothing store with product browsing, filtering, and secure admin panel. <strong>Stack:</strong> ASP.NET, SQL Server, HTML, CSS, JavaScript</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
+    <iframe src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
     <p><a href="https://github.com/lialyAdam/Ecommerce" target="_blank">GitHub</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" onclick="showProject('deerbalak')">
     <h3>🚨 Deer Balak Alena – AI Emergency Management</h3>
-    <p>A smart emergency management system providing real-time alerts on incidents, road closures, traffic congestion, and potential hazards. Includes AI-based credibility scoring, account verification, and misinformation detection.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/krhpOGqY7tE"></iframe>
+    <p>Smart emergency management system providing real-time alerts and admin tools. Includes AI credibility scoring and misinformation detection.</p>
+    <iframe src="https://www.youtube.com/embed/krhpOGqY7tE"></iframe>
     <p><a href="https://github.com/lialyAdam/DeerBalak" target="_blank">GitHub</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" onclick="showProject('ai_name')">
     <h3>🤖 AI Name Validation Service</h3>
-    <p>Validates personal names using a GPT-4 AI model, scoring 0-100 for authenticity and providing explanations.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
+    <p>Validates personal names using a GPT-4 AI model with scoring and detailed explanations.</p>
+    <iframe src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
     <p><a href="https://github.com/lialyAdam/AI-Powered-Name-Validation-Service/tree/main" target="_blank">GitHub</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" onclick="showProject('supplydash')">
     <h3>📊 SupplySight Dashboard</h3>
-    <p>Daily inventory dashboard mimicking supply chain workflows with interactive charts, KPI cards, filters, and side-drawer product details.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
+    <p>Daily inventory dashboard with charts, KPI cards, filters, and interactive product details.</p>
+    <iframe src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
     <p><a href="https://github.com/lialyAdam/lial-dashboard" target="_blank">GitHub</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" onclick="showProject('tracevision')">
     <h3>📊 TraceVision Pro 4.0 – Compute Traces</h3>
     <p>Real-time compute traces tracker with speed, odometer, CSV export, and interactive charts.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
+    <iframe src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
     <p><a href="https://github.com/lialyAdam/compute-traces-dashboard" target="_blank">GitHub</a></p>
   </div>
 
-  <div class="card">
-    <h3>📄 AI-Powered Contract Analyzer</h3>
-    <p>Streamlit web application for uploading PDF contracts and getting AI-powered analysis. Extracts key clauses, detects risks, highlights unfair clauses, and allows PDF download. <strong>Stack:</strong> Streamlit, GPT-4, pdfplumber, ReportLab, Python</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/5YZwZbyPTow"></iframe>
-    <p><a href="https://github.com/lialyAdam/-Contract-Analyzer" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>📰 EzzyText – AI-Powered Text Evaluation Dashboard</h3>
-    <p>Web app to evaluate text for fake news, spam words, and credibility issues. Structured results with accuracy scores and interactive dashboard. <strong>Stack:</strong> Flask, OpenAI API, TailwindCSS, Python</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/-MzB2ANeWA8"></iframe>
-    <p><a href="https://github.com/lialyAdam/EzzyText-Detect-Fake-News-Spam-Word-" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>🧖‍♀️ SPA Center Website – React</h3>
-    <p>Modern responsive React website for a spa with booking, gallery, and testimonials.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/zt80NHNKMJQ"></iframe>
-    <p><a href="https://github.com/lialyAdam/Spa_Project" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>📥 Excel to SQL Converter</h3>
-    <p>Upload Excel files to convert content into SQL-ready format and insert into SQL Server database.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/Ernjn_1Z8qI"></iframe>
-    <p><a href="https://github.com/lialyAdam/ExcelToSQLConverter" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>💰 Web3.js Wallet – ETH Send & Receive</h3>
-    <p>Ethereum wallet interface to send/receive ETH on testnet.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/_Yrb1nkhnfc"></iframe>
-    <p><a href="https://github.com/lialyAdam/-EmploiToday-defiguard-Wallet" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>💬 Tribe Chat App – React Native</h3>
-    <p>Single-room chat app with grouped messages, emoji reactions, image attachments, offline storage, and real-time updates.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/cJfGTUhtT6A"></iframe>
-    <p><a href="https://github.com/lialyAdam/tribe-chat-app" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
-    <h3>📦 Items-Store – Inventory Management</h3>
-    <p>ASP.NET inventory system for electronics with CRUD operations and dynamic dashboard.</p>
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/uFazzxp0SAY"></iframe>
-    <p><a href="https://github.com/lialyAdam/Item-Management-Dashboard" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card">
+  <div class="card" onclick="showProject('imgzipcsv')">
     <h3>🖼️ Image to ZIP + CSV Converter</h3>
-    <p>Upload multiple images, download as a single ZIP including results.csv metadata.</p>
+    <p>Upload multiple images and download as a single ZIP including results.csv metadata.</p>
     <p><a href="https://github.com/lialyAdam/image-zip-csv" target="_blank">GitHub</a></p>
     <p><a href="https://github.com/DreamLayer-AI/DreamLayer/pull/93" target="_blank">Pull Request</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" onclick="showProject('excel2sql')">
+    <h3>📥 Excel to SQL Converter</h3>
+    <p>Upload Excel files and convert content into SQL-ready format for database insertion.</p>
+    <iframe src="https://www.youtube.com/embed/Ernjn_1Z8qI"></iframe>
+    <p><a href="https://github.com/lialyAdam/ExcelToSQLConverter" target="_blank">GitHub</a></p>
+  </div>
+
+  <div class="card" onclick="showProject('wallet')">
+    <h3>💰 Web3.js Wallet – ETH Send & Receive</h3>
+    <p>Ethereum wallet interface to send/receive ETH on testnet.</p>
+    <iframe src="https://www.youtube.com/embed/_Yrb1nkhnfc"></iframe>
+    <p><a href="https://github.com/lialyAdam/-EmploiToday-defiguard-Wallet" target="_blank">GitHub</a></p>
+  </div>
+
+  <div class="card" onclick="showProject('tribechat')">
+    <h3>💬 Tribe Chat App – React Native</h3>
+    <p>Single-room chat app with grouped messages, emoji reactions, image attachments, offline storage, and real-time updates.</p>
+    <iframe src="https://www.youtube.com/embed/cJfGTUhtT6A"></iframe>
+    <p><a href="https://github.com/lialyAdam/tribe-chat-app" target="_blank">GitHub</a></p>
+  </div>
+
+  <div class="card" onclick="showProject('itemsstore')">
+    <h3>📦 Items-Store – Inventory Management</h3>
+    <p>ASP.NET inventory system for electronics with CRUD operations and dynamic dashboard.</p>
+    <iframe src="https://www.youtube.com/embed/uFazzxp0SAY"></iframe>
+    <p><a href="https://github.com/lialyAdam/Item-Management-Dashboard" target="_blank">GitHub</a></p>
+  </div>
+
+  <div class="card" onclick="showProject('spa')">
+    <h3>🧖‍♀️ SPA Center Website – React</h3>
+    <p>Modern responsive React website for a spa with booking, gallery, and testimonials.</p>
+    <iframe src="https://www.youtube.com/embed/zt80NHNKMJQ"></iframe>
+    <p><a href="https://github.com/lialyAdam/Spa_Project" target="_blank">GitHub</a></p>
+  </div>
+
+  <div class="card" onclick="showProject('dithering')">
     <h3>🖼️ Pattern Dithering with Parallel Processing</h3>
     <p>Convert grayscale images to 1-bit B/W using serial & Pthreads parallel implementations.</p>
     <p><a href="https://github.com/lialyAdam/parallel" target="_blank">GitHub</a></p>
   </div>
 </section>
 
+<!-- Project Details Sections -->
+<section id="ecommerce" class="project-details">
+  <h2>🛒 E-Commerce Website</h2>
+  <p>Online clothing store with product browsing, filtering, and secure admin panel.</p>
+  <p><strong>Stack:</strong> ASP.NET, SQL Server, HTML, CSS, JavaScript</p>
+  <iframe width="100%" height="250" src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-<section id="skills" style="padding:4rem 2rem; max-width:1200px; margin:auto;">
-  <h2 style="text-align:center; margin-bottom:2rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:2rem;">Skills</h2>
-  
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2rem;">
+<section id="deerbalak" class="project-details">
+  <h2>🚨 Deer Balak Alena – AI Emergency Management</h2>
+  <p>A smart emergency management system designed to help users stay safe by providing real-time alerts about incidents such as road closures, traffic congestion, and potential hazards. The system includes advanced features like incident reporting, account verification, and misinformation detection.</p>
+  <p>I trained an AI model to evaluate the credibility of both users and their posts by assigning a dynamic score based on various trust and content quality factors. Additionally, the system checks usernames against a database to determine if an account is restricted or blocked.</p>
+  <p>I also designed a dedicated Admin Dashboard that allows administrators to review, accept, or reject user-submitted reports. This page is exclusively accessible to admins and plays a key role in ensuring fairness and accuracy across the platform by giving them full control over public posts.</p>
+  <p>The project focuses on security, usability, and supporting users in making informed decisions during emergency situations.</p>
+  <iframe width="100%" height="250" src="https://www.youtube.com/embed/krhpOGqY7tE"></iframe>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>💻 Frontend</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:90%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">HTML, CSS, JavaScript, React, React Native, TailwindCSS</p>
-    </div>
+<section id="ai_name" class="project-details">
+  <h2>🤖 AI-Powered Name Validation Service</h2>
+  <p>I developed an advanced intelligent system for validating personal names, utilizing a custom-trained GPT-4 AI model tailored specifically for this task. The system analyzes user-provided names and assigns a numerical score from 0 to 100 indicating the likelihood that the name is real or fake.</p>
+  <p>In addition to the score, the system generates a detailed explanation justifying the evaluation, along with a simplified message to help end-users understand why their name might be rejected. This improves user experience and transparency.</p>
+  <p>If the name passes validation with a sufficiently high score, the user is allowed to proceed with registration and subsequent login. However, if the score is low and the name is flagged as potentially fake, the system requires the user to submit official identification to verify their name, ensuring fairness and trust for all users.</p>
+  <p>The primary goal of this project is to reduce fake or suspicious accounts and improve data quality across digital platforms, thereby enhancing system reliability and increasing user trust.</p>
+  <iframe width="100%" height="250" src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>⚙️ Backend</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:85%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">ASP.NET, C#, Entity Framework, SQL Server, REST APIs</p>
-    </div>
+<section id="supplydash" class="project-details">
+  <h2>📊 SupplySight Dashboard — Take-Home Challenge</h2>
+  <p>A polished Daily Inventory Dashboard built as part of a take-home challenge. Mimics real supply chain workflows with KPI cards, interactive charts, filters, and side-drawer product details.</p>
+  <p>⚛️ React + Tailwind CSS for responsive UI</p>
+  <p>🔗 Apollo GraphQL (mock server + queries/mutations)</p>
+  <p>📈 Recharts for KPI & trend visualization</p>
+  <p>⚡ Live filters, pagination, and interactive drawers</p>
+  <iframe width="100%" height="250" src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>☁️ Cloud & DevOps</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:75%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">Azure, CI/CD, GitHub Actions</p>
-    </div>
+<section id="tracevision" class="project-details">
+  <h2>📊 TraceVision Pro 4.0 – Compute Traces Dashboard</h2>
+  <p>Real-time compute traces tracker built with React for the frontend and Python for the backend. The dashboard allows users to monitor speed, odometer readings, and compute results. It supports CSV export and interactive charts.</p>
+  <p>🔧 Technologies: React, TypeScript, Python, CSV, HTML, CSS</p>
+  <iframe width="100%" height="250" src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>🛠️ Tools & Others</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:80%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">SignalR, QGIS, NetLogo, Wireshark, AsyncStorage</p>
-    </div>
+<section id="imgzipcsv" class="project-details">
+  <h2>🖼️ Image to ZIP + CSV Converter</h2>
+  <p>A simple web tool that allows users to upload multiple images and download them as a single compressed ZIP file. The ZIP also includes a results.csv file containing metadata such as filenames and indices.</p>
+  <p>✨ Features:</p>
+  <ul>
+    <li>Upload multiple images at once</li>
+    <li>Automatically generate results.csv with metadata</li>
+    <li>Download everything as a single deterministic ZIP file</li>
+    <li>Lightweight and easy to use</li>
+  </ul>
+  <p>🛠 Technologies: React (Frontend), Python (Backend), CSV, ZIP Compression</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
 
-  </div>
+<section id="excel2sql" class="project-details">
+  <h2>📥 Excel to SQL Converter</h2>
+  <p>Import data from Excel File to Database Table in ASP.NET Core. Allows automatic conversion of Excel content into SQL-ready format and inserts into SQL Server database using ADO.NET.</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
+
+<section id="wallet" class="project-details">
+  <h2>💰 Web3.js Wallet – ETH Send & Receive</h2>
+  <p>Ethereum wallet interface to send/receive ETH on testnet.</p>
+  <p>🛠 Technologies: Web3.js, JavaScript, HTML, Ethereum Testnet</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
+
+<section id="tribechat" class="project-details">
+  <h2>💬 Tribe Chat App – Cross-Platform React Native</h2>
+  <p>A single-room chat app built with React Native and Expo, designed for smooth cross-platform messaging.</p>
+  <p>✨ Features:</p>
+  <ul>
+    <li>Grouped messages by date with avatars, names, and timestamps</li>
+    <li>Emoji reactions and edit indicators</li>
+    <li>Image attachments with preview modal</li>
+    <li>Infinite scroll for older messages</li>
+    <li>Offline persistence using async-storage</li>
+    <li>Efficient real-time updates via polling</li>
+  </ul>
+  <p>🛠 Technologies: React Native, Expo, Zustand, async-storage, JavaScript</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
+
+<section id="itemsstore" class="project-details">
+  <h2>📦 Items-Store – Inventory Management System</h2>
+  <p>Simple inventory system built with ASP.NET, managing electronic items with CRUD operations and dynamic dashboard.</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
+
+<section id="spa" class="project-details">
+  <h2>🧖‍♀️ SPA Center Website – React & Modern Frontend</h2>
+  <p>Fully responsive React website for a luxury spa center with booking, gallery, and testimonials.</p>
+  <p>✨ Key Features:</p>
+  <ul>
+    <li>Service descriptions with icons</li>
+    <li>Booking section with call-to-action</li>
+    <li>Image gallery for spa rooms & treatments</li>
+    <li>Customer testimonials and feedback</li>
+  </ul>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
+</section>
+
+<section id="dithering" class="project-details">
+  <h2>🖼️ Pattern Dithering with Parallel Processing</h2>
+  <p>Convert 8-bit grayscale images into 1-bit B/W using serial and parallel Pthreads implementations.</p>
+  <p>🔧 Implementation:</p>
+  <ul>
+    <li>Serial version: single thread processing</li>
+    <li>Parallel version: multiple threads using Pthreads library</li>
+  </ul>
+  <p>🕒 Performance Results:</p>
+  <ul>
+    <li>Serial time: 0.5432 s</li>
+    <li>1 thread: 0.55 s</li>
+    <li>2 threads: 0.31 s</li>
+    <li>4 threads: 0.18 s</li>
+    <li>8 threads: 0.11 s</li>
+  </ul>
+  <p>✅ Conclusion: Parallelizing with Pthreads significantly reduces processing time, optimal balance achieved with 4 threads.</p>
+  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
 </section>
 
 
-  <section id="contact">
-    <h2 style="text-align:center; margin-top:3rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:2rem;">Contact Me</h2>
-    <div class="contact">
-      <a href="mailto:lialadamawad@gmail.com">📧 Email</a>
-      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">💼 LinkedIn</a>
-      <a href="https://github.com/lialyAdam" target="_blank">🐙 GitHub</a>
-    </div>
-  </section>
+<section id="contact">
+  <h2 style="text-align:center; margin-top:3rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:2rem;">Contact Me</h2>
+  <div class="contact">
+    <a href="mailto:lialadamawad@gmail.com">📧 Email</a>
+    <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">💼 LinkedIn</a>
+    <a href="https://github.com/lialyAdam" target="_blank">🐙 GitHub</a>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Lial. Built with ❤️</p>
-  </footer>
+<footer>
+  <p>© 2025 Lial. Built with ❤️</p>
+</footer>
+
+<script>
+  function showProject(id) {
+    document.getElementById('projects').style.display = 'none';
+    const details = document.querySelectorAll('.project-details');
+    details.forEach(d => d.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    window.scrollTo(0,0);
+  }
+  function goBack() {
+    const details = document.querySelectorAll('.project-details');
+    details.forEach(d => d.style.display = 'none');
+    document.getElementById('projects').style.display = 'grid';
+    window.scrollTo(0,0);
+  }
+</script>
 </body>
 </html>
