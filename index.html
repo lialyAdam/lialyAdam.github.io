@@ -33,6 +33,14 @@
   .card p { color:#9ca3af; font-size:0.95rem; margin-bottom:1rem; }
   .card a { text-decoration:none; color:#06b6d4; font-weight:600; transition: color 0.3s; }
   .card a:hover { color:#3b82f6; }
+  .card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
   .card iframe { width:100%; height:140px; border-radius:0.5rem; border:none; display:block; position:relative; z-index:1; transition: transform 0.3s ease;}
   .card:hover iframe { transform: scale(1.05); }
   .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:2rem; }
@@ -60,6 +68,11 @@
   animation: glowMove 3s ease infinite;
   box-shadow: 0 0 20px rgba(59,130,246,0.6);
 }
+  .try-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(147,51,234,0.9);
+}
+
 
 @keyframes glowMove {
   0% { background-position: 0% 50%; }
@@ -181,15 +194,30 @@
     <p>Convert grayscale images to 1-bit B/W using serial & Pthreads parallel implementations.</p>
     <p><a href="https://github.com/lialyAdam/parallel" target="_blank">GitHub</a></p>
   </div>
-  <div class="card" onclick="showProject('rpsls')">
+<div class="card" onclick="showProject('rpsls')">
   <h3>🎮 RPSLS DApp — Web3 Game</h3>
+
   <p>
     Decentralized Rock Paper Scissors Lizard Spock game using
     Ethereum smart contracts and commit–reveal scheme.
   </p>
+
   <p><strong>Stack:</strong> React, Solidity, ethers.js</p>
-  <p><a>View Details →</a></p>
+
+  <div class="card-actions">
+<span class="details-link">View Details →</span>
+
+    <a
+      href="https://vercel.com/lialyadams-projects/rpsls-dapp-lial"
+      target="_blank"
+      class="try-btn"
+      onclick="event.stopPropagation()"
+    >
+      ▶ Try Online
+    </a>
+  </div>
 </div>
+
 
 </section>
 
