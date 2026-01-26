@@ -48,6 +48,25 @@
   .project-details p { margin-bottom:1rem; }
   .back-btn { display:inline-block; margin-top:1rem; padding:0.5rem 1rem; border-radius:var(--radius); background: #3b82f6; color:#fff; text-decoration:none; cursor:pointer; transition: background 0.3s; }
   .back-btn:hover { background:#06b6d4; }
+  .try-btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #9333ea);
+  background-size: 200% 200%;
+  animation: glowMove 3s ease infinite;
+  box-shadow: 0 0 20px rgba(59,130,246,0.6);
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 </style>
 </head>
 <body>
