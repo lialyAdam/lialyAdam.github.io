@@ -3,734 +3,463 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lial's Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Lial Awwad — Full-Stack &amp; AI Systems Developer</title>
+<meta name="description" content="Portfolio of Lial Awwad — full-stack developer building AI agents, web platforms and Web3 applications, organized by discipline." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0f1117;
-    --text: #e5e7eb;
-    --accent: linear-gradient(90deg, #06b6d4, #3b82f6, #9333ea);
-    --card-bg: rgba(255,255,255,0.05);
-    --radius: 1rem;
-    --transition: 0.4s ease;
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f4f7f6;
+    --ink:#111818;
+    --ink-dim:#586364;
+    --ink-faint:#95a09f;
+    --line:#e2e8e7;
+    --line-strong:#cdd7d5;
+    --accent:#0e7c6b;
+    --accent-dark:#0a5c4f;
+    --accent-soft:rgba(14,124,107,.09);
+    --accent-line:rgba(14,124,107,.3);
+    --radius:12px;
+    --radius-lg:18px;
+    --display:'Manrope',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+    --maxw:1220px;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  header { padding: 1.5rem 3rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background: rgba(15,17,23,0.9); backdrop-filter: blur(10px); z-index:100;}
-  header h1 { font-size:1.6rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight:700; }
-  nav a { margin-left:2rem; text-decoration:none; color:#cbd5e1; font-weight:500; transition:color 0.3s;}
-  nav a:hover { color:#fff; }
-  .hero { text-align:center; padding:8rem 2rem 6rem; animation: fadeInUp 1s ease forwards; opacity:0; }
-  .hero h2 { font-size:3rem; font-weight:700; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom:1rem; }
-  .hero p { max-width:700px; margin:0 auto; font-size:1.1rem; color:#94a3b8; }
-  .projects { padding:4rem 2rem; max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2.5rem; }
-  .card { position: relative; background: var(--card-bg); border-radius: var(--radius); padding:1.5rem; backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; transition: transform var(--transition), border-color var(--transition); animation: fadeInUp 1s ease forwards; opacity:0; }
-  .card::before { content:''; position:absolute; inset:0; background:linear-gradient(120deg, rgba(6,182,212,0.3), rgba(59,130,246,0.3), rgba(147,51,234,0.3)); opacity:0; transition:opacity 0.5s ease; z-index:0;}
-  .card:hover::before { opacity:1; }
-  .card:hover { transform: translateY(-10px); border-color: #3b82f6; }
-  .card h3, .card p, .card a { position:relative; z-index:1; }
-  .card h3 { font-size:1.3rem; margin-bottom:0.8rem; color:#fff; }
-  .card p { color:#9ca3af; font-size:0.95rem; margin-bottom:1rem; }
-  .card a { text-decoration:none; color:#06b6d4; font-weight:600; transition: color 0.3s; }
-  .card a:hover { color:#3b82f6; }
-  .card-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--accent);color:#fff;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 2.2rem;}
+  @media(max-width:640px){.wrap{padding:0 1.25rem;}}
 
-  .card iframe { width:100%; height:140px; border-radius:0.5rem; border:none; display:block; position:relative; z-index:1; transition: transform 0.3s ease;}
-  .card:hover iframe { transform: scale(1.05); }
-  .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:2rem; }
-  .contact a { text-decoration:none; color:#06b6d4; font-weight:600; background:rgba(255,255,255,0.05); padding:0.8rem 1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px); transition: transform 0.3s ease, color 0.3s ease;}
-  .contact a:hover { transform: translateY(-5px); color:#3b82f6; }
-  footer { text-align:center; padding:2rem; font-size:0.9rem; color:#64748b; margin-top:4rem;}
-  @keyframes fadeInUp { 0% { opacity:0; transform:translateY(20px); } 100% { opacity:1; transform:translateY(0);} }
-  @media(max-width:768px){ header { flex-direction:column; align-items:flex-start;} nav{margin-top:1rem;} }
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;max-width:var(--maxw);margin:0 auto;padding-left:2.2rem;padding-right:2.2rem;}
+  .brand{font-family:var(--display);font-weight:800;font-size:1.05rem;text-decoration:none;display:flex;align-items:center;gap:.5rem;letter-spacing:-.01em;}
+  .brand .mark{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+  nav.links{display:flex;gap:2.1rem;align-items:center;}
+  nav.links a{font-size:.88rem;font-weight:500;color:var(--ink-dim);text-decoration:none;transition:color .2s;}
+  nav.links a:hover{color:var(--ink);}
+  .nav-cta{font-size:.85rem;font-weight:600;background:var(--ink);color:#fff;padding:.65rem 1.3rem;border-radius:100px;text-decoration:none;transition:.2s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--accent);}
+  .menu-btn{display:none;background:none;border:1px solid var(--line-strong);border-radius:8px;color:var(--ink);width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;}
+  @media(max-width:840px){
+    nav.links{position:fixed;inset:62px 0 0 0;background:var(--bg);flex-direction:column;padding:2rem;gap:1.4rem;align-items:flex-start;transform:translateY(-110%);transition:transform .3s ease;border-top:1px solid var(--line);overflow-y:auto;}
+    nav.links.open{transform:translateY(0);}
+    nav.links a{font-size:1.05rem;}
+    .menu-btn{display:flex;}
+    .nav-cta{display:none;}
+  }
 
-  /* Details page styles */
-  .project-details { display:none; padding:4rem 2rem; max-width:900px; margin:auto; background: var(--card-bg); border-radius: var(--radius); backdrop-filter: blur(12px); }
-  .project-details h2 { font-size:2rem; margin-bottom:1rem; background: var(--accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .project-details p { margin-bottom:1rem; }
-  .back-btn { display:inline-block; margin-top:1rem; padding:0.5rem 1rem; border-radius:var(--radius); background: #3b82f6; color:#fff; text-decoration:none; cursor:pointer; transition: background 0.3s; }
-  .back-btn:hover { background:#06b6d4; }
-  .try-btn {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  border-radius: 999px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(90deg, #22d3ee, #3b82f6, #9333ea);
-  background-size: 200% 200%;
-  animation: glowMove 3s ease infinite;
-  box-shadow: 0 0 20px rgba(59,130,246,0.6);
-}
-  .try-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(147,51,234,0.9);
-}
+  /* ---------- HERO ---------- */
+  .hero{padding:5.5rem 0 4rem;}
+  .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);display:inline-block;padding:.4rem .9rem;border-radius:100px;margin-bottom:1.6rem;}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,5.2vw,3.6rem);line-height:1.12;letter-spacing:-.02em;max-width:18ch;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero-sub{font-size:1.08rem;color:var(--ink-dim);max-width:52ch;margin:1.5rem 0 2.2rem;}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+  .btn{font-size:.9rem;font-weight:600;padding:.9rem 1.7rem;border-radius:100px;text-decoration:none;transition:.2s;}
+  .btn-solid{background:var(--ink);color:#fff;}
+  .btn-solid:hover{background:var(--accent);transform:translateY(-2px);}
+  .btn-line{border:1.5px solid var(--line-strong);color:var(--ink);}
+  .btn-line:hover{border-color:var(--accent);color:var(--accent);}
 
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .stat-row .stat{padding:1.4rem 1.2rem;border-right:1px solid var(--line);}
+  .stat-row .stat:last-child{border-right:none;}
+  .stat b{display:block;font-family:var(--display);font-size:1.7rem;font-weight:800;color:var(--ink);}
+  .stat span{font-size:.78rem;color:var(--ink-dim);}
+  @media(max-width:760px){.stat-row{grid-template-columns:repeat(2,1fr);}.stat-row .stat:nth-child(2){border-right:none;}.stat-row .stat{border-bottom:1px solid var(--line);}}
 
-@keyframes glowMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  /* ---------- CATEGORY NAV (sticky sub-bar) ---------- */
+  .cat-nav-wrap{position:sticky;top:65px;z-index:150;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .cat-nav{display:flex;gap:.5rem;overflow-x:auto;padding:.9rem 0;scrollbar-width:none;}
+  .cat-nav::-webkit-scrollbar{display:none;}
+  .cat-pill{font-size:.82rem;font-weight:600;color:var(--ink-dim);text-decoration:none;padding:.55rem 1.05rem;border-radius:100px;border:1px solid var(--line-strong);white-space:nowrap;transition:.2s;display:flex;align-items:center;gap:.45rem;}
+  .cat-pill .count{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);}
+  .cat-pill:hover{border-color:var(--accent);color:var(--ink);}
+  .cat-pill.active{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .cat-pill.active .count{color:rgba(255,255,255,.65);}
 
+  /* ---------- CATEGORY SECTIONS ---------- */
+  .category-section{padding:4.4rem 0;border-bottom:1px solid var(--line);scroll-margin-top:140px;}
+  .cat-head{display:flex;align-items:flex-start;gap:1.1rem;margin-bottom:2.4rem;}
+  .cat-icon-box{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cat-icon-box svg{width:22px;height:22px;color:var(--accent);}
+  .cat-head h2{font-family:var(--display);font-weight:800;font-size:1.55rem;letter-spacing:-.01em;}
+  .cat-head p{color:var(--ink-dim);font-size:.94rem;margin-top:.3rem;max-width:60ch;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.3rem;}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:.25s;}
+  .card:hover{border-color:var(--line-strong);box-shadow:0 12px 32px rgba(17,24,24,.06);transform:translateY(-3px);}
+  .video-frame{position:relative;aspect-ratio:16/9;background:var(--bg-soft);overflow:hidden;}
+  .video-frame img{width:100%;height:100%;object-fit:cover;}
+  .video-frame iframe{width:100%;height:100%;border:0;}
+  .cover-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:2.2rem;color:var(--line-strong);background:var(--bg-soft);}
+  .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(17,24,24,0);border:0;cursor:pointer;transition:background .2s;}
+  .play-btn:hover{background:rgba(17,24,24,.15);}
+  .play-btn svg{width:44px;height:44px;}
+  .play-btn circle{fill:#fff;}
+  .play-btn path{fill:var(--ink);}
+  .card-body{padding:1.3rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.8rem;flex:1;}
+  .card h3{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.005em;}
+  .card .desc{color:var(--ink-dim);font-size:.88rem;}
+  .stack-row{display:flex;flex-wrap:wrap;gap:.4rem;}
+  .chip{font-family:var(--mono);font-size:.68rem;color:var(--ink-dim);background:var(--bg-soft);border:1px solid var(--line);padding:.22rem .55rem;border-radius:5px;}
+  details.more summary{cursor:pointer;color:var(--accent-dark);font-weight:600;font-size:.82rem;list-style:none;display:flex;align-items:center;gap:.35rem;}
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::before{content:'+';font-weight:800;}
+  details.more[open] summary::before{content:'–';}
+  details.more ul{margin:.7rem 0 0 1.1rem;color:var(--ink-dim);font-size:.85rem;}
+  details.more ul li{margin-bottom:.3rem;}
+  .card-actions{margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line);display:flex;gap:1rem;flex-wrap:wrap;}
+  .card-actions a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--ink-dim);display:flex;align-items:center;gap:.35rem;transition:.2s;}
+  .card-actions a:hover{color:var(--accent-dark);}
+  .card-actions svg{width:14px;height:14px;}
+  .card-actions .live{margin-left:auto;color:var(--accent-dark);}
+
+  /* ---------- SKILLS ---------- */
+  #skills{padding:5rem 0;}
+  .section-tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.6rem;}
+  #skills h2{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.01em;margin-bottom:2.4rem;}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;}
+  .skill-card{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem;}
+  .skill-card h3{font-family:var(--display);font-weight:700;font-size:.95rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
+  .skill-card h3 svg{width:17px;height:17px;color:var(--accent);}
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:.45rem;}
+  .tag-cloud span{font-family:var(--mono);font-size:.73rem;color:var(--ink-dim);background:#fff;border:1px solid var(--line-strong);padding:.28rem .6rem;border-radius:6px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-band{background:var(--ink);color:#fff;}
+  .contact-inner{text-align:center;padding:5.5rem 0;}
+  .contact-inner .section-tag{color:#7fe0cf;}
+  .contact-inner h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,2.8rem);max-width:18ch;margin:.5rem auto 1.1rem;letter-spacing:-.01em;}
+  .contact-inner p{color:rgba(255,255,255,.65);max-width:46ch;margin:0 auto 2.3rem;}
+  .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+  .contact-links a{display:flex;align-items:center;gap:.55rem;font-size:.88rem;font-weight:600;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.22);padding:.8rem 1.4rem;border-radius:100px;transition:.2s;}
+  .contact-links a:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);}
+  .contact-links svg{width:16px;height:16px;}
+
+  footer{text-align:center;padding:2.2rem 0;font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);background:var(--ink);}
+
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition-duration:.001ms !important;}}
 </style>
 </head>
 <body>
-<header>
-  <h1>Lial's Portfolio</h1>
-  <nav>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="mark">L</span>Lial Awwad</a>
+    <nav class="links" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="mailto:lialadamawad@gmail.com">Let's talk</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
 </header>
- 
 
-<section class="hero">
-  <h2>Hi, I'm Lial 👋</h2>
-  <p> Passionate Full Stack Developer working on innovative Frontend, Backend, and AI projects. I enjoy turning complex ideas into simple, user-friendly digital experiences.</p>
-</section>
-<section id="projects" class="projects">
-  <!-- Projects Cards -->
-   <div class="card" onclick="showProject('LIALstore')">
-  <h3> LIAL Store — AI Support Agent</h3>
-
-  <p>
-    Bilingual AI customer support agent that understands Arabic, English,
-    and mixed-language requests, with secure access to business tools.
-    Supports order tracking, cancellations, refund requests, policy questions,
-    and human escalation.
-  </p>
-
-  <iframe
-    src="https://www.youtube.com/embed/lFC79LBct3Y"
-    title="LIAL Store AI Support Demo"
-    allowfullscreen>
-  </iframe>
-
-  <div class="card-actions">
-
-    <a
-      href="https://github.com/lialyAdam/Lial-store-agent"
-      target="_blank"
-      onclick="event.stopPropagation()">
-      GitHub
-    </a>
-
-    <a
-      href="https://youtu.be/lFC79LBct3Y"
-      target="_blank"
-      class="try-btn"
-      onclick="event.stopPropagation()">
-      ▶ Watch Demo
-    </a>
-
-  </div>
-</div>
-<div class="card" onclick="showProject('zivora')">
-  <h3>🏡 Zivora – Real Estate Website</h3>
-
-  <p>
-    Modern real estate website showcasing villas and homes with a clean UI and
-    nature-inspired design.
-  </p>
-
-  <iframe src="https://www.youtube.com/embed/VrkQFGOcGfY"></iframe>
-
-  <div class="card-actions">
-
-    <a href="https://github.com/lialyAdam/ZIVORA"
-       target="_blank"
-       onclick="event.stopPropagation()">
-       GitHub
-    </a>
-
-    <a
-      href="https://zivora-one.vercel.app/"
-      target="_blank"
-      class="try-btn"
-      onclick="event.stopPropagation()"
-    >
-      ▶ Try Online
-    </a>
-
-  </div>
-</div>
-<div class="card" onclick="showProject('berrylicious')">
-  <h3>🍓 Berrylicious – Dessert Shop Website</h3>
-
-  <p>
-    Stylish dessert shop website showcasing cakes, sweets, and bakery products
-    with modern UI and responsive layout.
-  </p>
-
-  <iframe src="https://www.youtube.com/embed/-2enCqUPK00"></iframe>
-
-  <div class="card-actions">
-
-    <a href="https://github.com/lialyAdam/Berrylicious"
-       target="_blank"
-       onclick="event.stopPropagation()">
-       GitHub
-    </a>
-
-    <a
-      href="https://berrylicious-ruddy.vercel.app/"
-      target="_blank"
-      class="try-btn"
-      onclick="event.stopPropagation()"
-    >
-      ▶ Try Online
-    </a>
-
-  </div>
-</div>
-  
-  <div class="card" onclick="showProject('ecommerce')">
-    <h3>🛒 E-Commerce Website</h3>
-    <p>Online clothing store with product browsing, filtering, and secure admin panel. <strong>Stack:</strong> ASP.NET, SQL Server, HTML, CSS, JavaScript</p>
-    <iframe src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
-    <p><a href="https://github.com/lialyAdam/Ecommerce" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('deerbalak')">
-    <h3>🚨 Deer Balak Alena – AI Emergency Management</h3>
-    <p>Smart emergency management system providing real-time alerts and admin tools.Includes AI credibility scoring and misinformation detection.</p>
-  <iframe
-  src="https://www.youtube.com/embed/uAzaN0TDZ4Q"
-  title="Deer Balak Alena - AI Emergency Management Demo"
-  allowfullscreen>
-</iframe>
-    <p><a href="https://github.com/lialyAdam/DeerBalak" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('ai_name')">
-    <h3>🤖 AI Name Validation Service</h3>
-    <p>Validates personal names using a GPT-4 AI model with scoring and detailed explanations.</p>
-    <iframe src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
-    <p><a href="https://github.com/lialyAdam/AI-Powered-Name-Validation-Service/tree/main" target="_blank">GitHub</a></p>
-  </div>
-
-<!-- Project Cards -->
-<div class="card" onclick="showProject('contractanalyzer')">
-  <h3>📄 AI-Powered Contract Analyzer</h3>
-  <p>Streamlit web application for uploading PDF contracts and getting AI-powered analysis. Extracts key clauses, detects risks, highlights unfair clauses, and allows PDF download. <strong>Stack:</strong> Streamlit, GPT-4, pdfplumber, ReportLab, Python</p>
-  <iframe width="100%" height="120" src="https://www.youtube.com/embed/5YZwZbyPTow"></iframe>
-  <p><a href="https://github.com/lialyAdam/-Contract-Analyzer" target="_blank">GitHub</a></p>
-</div>
-
-<div class="card" onclick="showProject('ezzytext')">
-  <h3>📰 EzzyText – AI-Powered Text Evaluation Dashboard</h3>
-  <p>Web app to evaluate text for fake news, spam words, and credibility issues. Structured results with accuracy scores and interactive dashboard. <strong>Stack:</strong> Flask, OpenAI API, TailwindCSS, Python</p>
-  <iframe width="100%" height="120" src="https://www.youtube.com/embed/-MzB2ANeWA8"></iframe>
-  <p><a href="https://github.com/lialyAdam/EzzyText-Detect-Fake-News-Spam-Word-" target="_blank">GitHub</a></p>
-</div>
-
-  <div class="card" onclick="showProject('supplydash')">
-    <h3>📊 SupplySight Dashboard</h3>
-    <p>Daily inventory dashboard with charts, KPI cards, filters, and interactive product details.</p>
-    <iframe src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
-    <p><a href="https://github.com/lialyAdam/lial-dashboard" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('tracevision')">
-    <h3>📊 TraceVision Pro 4.0 – Compute Traces</h3>
-    <p>Real-time compute traces tracker with speed, odometer, CSV export, and interactive charts.</p>
-    <iframe src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
-    <p><a href="https://github.com/lialyAdam/compute-traces-dashboard" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('imgzipcsv')">
-    <h3>🖼️ Image to ZIP + CSV Converter</h3>
-    <p>Upload multiple images and download as a single ZIP including results.csv metadata.</p>
-    <p><a href="https://github.com/lialyAdam/image-zip-csv" target="_blank">GitHub</a></p>
-    <p><a href="https://github.com/DreamLayer-AI/DreamLayer/pull/93" target="_blank">Pull Request</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('excel2sql')">
-    <h3>📥 Excel to SQL Converter</h3>
-    <p>Upload Excel files and convert content into SQL-ready format for database insertion.</p>
-    <iframe src="https://www.youtube.com/embed/Ernjn_1Z8qI"></iframe>
-    <p><a href="https://github.com/lialyAdam/ExcelToSQLConverter" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('wallet')">
-    <h3>💰 Web3.js Wallet – ETH Send & Receive</h3>
-    <p>Ethereum wallet interface to send/receive ETH on testnet.</p>
-    <iframe src="https://www.youtube.com/embed/_Yrb1nkhnfc"></iframe>
-    <p><a href="https://github.com/lialyAdam/-EmploiToday-defiguard-Wallet" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('tribechat')">
-    <h3>💬 Tribe Chat App – React Native</h3>
-    <p>Single-room chat app with grouped messages, emoji reactions, image attachments, offline storage, and real-time updates.</p>
-    <iframe src="https://www.youtube.com/embed/cJfGTUhtT6A"></iframe>
-    <p><a href="https://github.com/lialyAdam/tribe-chat-app" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('itemsstore')">
-    <h3>📦 Items-Store – Inventory Management</h3>
-    <p>ASP.NET inventory system for electronics with CRUD operations and dynamic dashboard.</p>
-    <iframe src="https://www.youtube.com/embed/uFazzxp0SAY"></iframe>
-    <p><a href="https://github.com/lialyAdam/Item-Management-Dashboard" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('spa')">
-    <h3>🧖‍♀️ SPA Center Website – React</h3>
-    <p>Modern responsive React website for a spa with booking, gallery, and testimonials.</p>
-    <iframe src="https://www.youtube.com/embed/zt80NHNKMJQ"></iframe>
-    <p><a href="https://github.com/lialyAdam/Spa_Project" target="_blank">GitHub</a></p>
-  </div>
-
-  <div class="card" onclick="showProject('dithering')">
-    <h3>🖼️ Pattern Dithering with Parallel Processing</h3>
-    <p>Convert grayscale images to 1-bit B/W using serial & Pthreads parallel implementations.</p>
-    <p><a href="https://github.com/lialyAdam/parallel" target="_blank">GitHub</a></p>
-  </div>
-<div class="card" onclick="showProject('rpsls')">
-  <h3>🎮 RPSLS DApp — Web3 Game</h3>
-
-  <p>
-    Decentralized Rock Paper Scissors Lizard Spock game using
-    Ethereum smart contracts and commit–reveal scheme.
-  </p>
-
-  <p><strong>Stack:</strong> React, Solidity, ethers.js</p>
-
-  <div class="card-actions">
-<span class="details-link">View Details →</span>
-
-    <a
-      href="https://vercel.com/lialyadams-projects/rpsls-dapp-lial"
-      target="_blank"
-      class="try-btn"
-      onclick="event.stopPropagation()"
-    >
-      ▶ Try Online
-    </a>
-  </div>
-</div>
-
-
-</section>
-
-<!-- Project Details Sections -->
-
-  <section id="LIALstore" class="project-details">
-  <h2>🤖 LIAL Store — AI Support Agent</h2>
-
-  <p>
-    LIAL Store is a bilingual AI customer support agent designed to handle
-    real-world e-commerce customer requests in Arabic, English, and
-    mixed-language conversations.
-  </p>
-
-  <p>
-    The agent can interact with business tools to assist customers with
-    order tracking, order cancellations, refund requests, store policies,
-    and human escalation when needed.
-  </p>
-
-  <p><strong>Key Features:</strong></p>
-
-  <ul>
-    <li>Arabic & English support</li>
-    <li>Mixed-language conversation handling</li>
-    <li>Order tracking</li>
-    <li>Order cancellation</li>
-    <li>Refund request handling</li>
-    <li>Store policy questions</li>
-    <li>Human escalation</li>
-    <li>Secure access to business tools</li>
-  </ul>
-
-  <p>
-    <strong>Project Type:</strong>
-    AI Customer Support Agent
-  </p>
-
-  <iframe
-    width="100%"
-    height="250"
-    src="https://www.youtube.com/embed/lFC79LBct3Y"
-    title="LIAL Store AI Support Demo"
-    allowfullscreen>
-  </iframe>
-
-  <br><br>
-
-  <a
-    href="https://github.com/lialyAdam/Lial-store-agent"
-    target="_blank"
-    class="try-btn">
-    GitHub
-  </a>
-
-  <br><br>
-
-  <a
-    href="https://youtu.be/lFC79LBct3Y"
-    target="_blank"
-    class="try-btn">
-    ▶ Watch Demo
-  </a>
-
-  <br><br>
-
-  <a class="back-btn" onclick="goBack()">
-    ← Back to Projects
-  </a>
-</section>
-  
- <section id="zivora" class="project-details">
-  <h2>🏡 Zivora – Real Estate Website</h2>
-
-  <p>
-  Zivora is a modern real estate website designed to showcase beautiful villas
-  and homes across the West Bank. The project focuses on elegant design,
-  responsive layout, and immersive property presentation.
-  </p>
-
-  <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
-
-  <iframe width="100%" height="250"
-  src="https://www.youtube.com/embed/VrkQFGOcGfY"></iframe>
-
-  <br><br>
-
-  <a
-    href="https://zivora-one.vercel.app/"
-    target="_blank"
-    class="try-btn"
-  >
-    ▶ Try Website Online
-  </a>
-
-  <br><br>
-
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="berrylicious" class="project-details">
-  <h2>🍓 Berrylicious – Dessert Shop Website</h2>
-
-  <p>
-  Berrylicious is a modern dessert and cake shop website designed to showcase
-  sweet products with a clean and engaging layout.
-  </p>
-
-  <p>
-  The project highlights responsive design, product galleries, and
-  visually appealing sections for cakes, pastries, and desserts.
-  </p>
-
-  <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
-
-  <iframe width="100%" height="250"
-  src="https://www.youtube.com/embed/-2enCqUPK00"></iframe>
-
-  <br><br>
-
-  <a
-    href="https://berrylicious-lialyadams-projects.vercel.app/"
-    target="_blank"
-    class="try-btn"
-  >
-    ▶ Try Website Online
-  </a>
-
-  <br><br>
-
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-<section id="ecommerce" class="project-details">
-  <h2>🛒 E-Commerce Website</h2>
-  <p>Online clothing store with product browsing, filtering, and secure admin panel.</p>
-  <p><strong>Stack:</strong> ASP.NET, SQL Server, HTML, CSS, JavaScript</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/DeVq1Ee6DE4"></iframe>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="deerbalak" class="project-details">
-  <h2>🚨 Deer Balak Alena – AI Emergency Management</h2>
-  <p>A smart emergency management system designed to help users stay safe by providing real-time alerts about incidents such as road closures, traffic congestion, and potential hazards. The system includes advanced features like incident reporting, account verification, and misinformation detection.</p>
-  <p>I trained an AI model to evaluate the credibility of both users and their posts by assigning a dynamic score based on various trust and content quality factors. Additionally, the system checks usernames against a database to determine if an account is restricted or blocked.</p>
-  <p>I also designed a dedicated Admin Dashboard that allows administrators to review, accept, or reject user-submitted reports. This page is exclusively accessible to admins and plays a key role in ensuring fairness and accuracy across the platform by giving them full control over public posts.</p>
-  <p>The project focuses on security, usability, and supporting users in making informed decisions during emergency situations.</p>
- <a href="https://www.youtube.com/watch?v=uAzaN0TDZ4Q"
-   target="_blank"
-   style="display:block; padding:50px; text-align:center; background:#181818; border-radius:10px; color:white; text-decoration:none; margin:20px 0;">
-   ▶ Watch Project Demo on YouTube
-</a>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="ai_name" class="project-details">
-  <h2>🤖 AI-Powered Name Validation Service</h2>
-  <p>I developed an advanced intelligent system for validating personal names, utilizing a custom-trained GPT-4 AI model tailored specifically for this task. The system analyzes user-provided names and assigns a numerical score from 0 to 100 indicating the likelihood that the name is real or fake.</p>
-  <p>In addition to the score, the system generates a detailed explanation justifying the evaluation, along with a simplified message to help end-users understand why their name might be rejected. This improves user experience and transparency.</p>
-  <p>If the name passes validation with a sufficiently high score, the user is allowed to proceed with registration and subsequent login. However, if the score is low and the name is flagged as potentially fake, the system requires the user to submit official identification to verify their name, ensuring fairness and trust for all users.</p>
-  <p>The primary goal of this project is to reduce fake or suspicious accounts and improve data quality across digital platforms, thereby enhancing system reliability and increasing user trust.</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/xrfVzR8u0sM"></iframe>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<!-- Project Details Sections -->
-<section id="contractanalyzer" class="project-details">
-  <h2>📄 AI-Powered Contract Analyzer</h2>
-  <p>This Streamlit web application allows users to upload PDF contracts and get automatic AI-powered analysis. It extracts key clauses, identifies potential risks, and highlights unfair or non-compliant clauses.</p>
-  <ul>
-    <li>Upload PDF contracts (up to 200MB)</li>
-    <li>Extract key clauses automatically</li>
-    <li>Identify potential risks</li>
-    <li>Highlight unfair/non-compliant clauses</li>
-    <li>Download analysis results as a professional PDF</li>
-    <li>User-friendly modern dashboard interface</li>
-  </ul>
-  <p><strong>Tech Stack:</strong> Streamlit (Frontend/UI), OpenAI GPT-4 (Backend/AI), pdfplumber (PDF Processing), ReportLab (PDF Export), Python venv, dotenv</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/5YZwZbyPTow"></iframe>
-  <p><a href="https://github.com/lialyAdam/-Contract-Analyzer" target="_blank">GitHub</a></p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="ezzytext" class="project-details">
-  <h2>📰 EzzyText – AI-Powered Text Evaluation Dashboard</h2>
-  <p>EzzyText is a professional web application built with Flask to evaluate text using AI. It detects fake names, fake news, and spam text, providing accuracy scores, explanations, and an interactive dashboard.</p>
-  <ul>
-    <li>Smart Text Evaluation: Analyze any text with AI</li>
-    <li>Fake News Detection</li>
-    <li>Spam Likelihood Scoring</li>
-    <li>Accuracy & Reliability Scores with interactive visuals</li>
-    <li>Professional UI/UX with responsive design and hover effects</li>
-    <li>Lightweight & Fast: Flask backend + single-page frontend</li>
-  </ul>
-  <p><strong>Tech Stack:</strong> Flask (Backend), OpenAI API, TailwindCSS (Frontend), Python</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/-MzB2ANeWA8"></iframe>
-  <p><a href="https://github.com/lialyAdam/EzzyText-Detect-Fake-News-Spam-Word-" target="_blank">GitHub</a></p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-
-
-
-
-<section id="supplydash" class="project-details">
-  <h2>📊 SupplySight Dashboard — Take-Home Challenge</h2>
-  <p>A polished Daily Inventory Dashboard built as part of a take-home challenge. Mimics real supply chain workflows with KPI cards, interactive charts, filters, and side-drawer product details.</p>
-  <p>⚛️ React + Tailwind CSS for responsive UI</p>
-  <p>🔗 Apollo GraphQL (mock server + queries/mutations)</p>
-  <p>📈 Recharts for KPI & trend visualization</p>
-  <p>⚡ Live filters, pagination, and interactive drawers</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/gdK9tM_TgQE"></iframe>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="tracevision" class="project-details">
-  <h2>📊 TraceVision Pro 4.0 – Compute Traces Dashboard</h2>
-  <p>Real-time compute traces tracker built with React for the frontend and Python for the backend. The dashboard allows users to monitor speed, odometer readings, and compute results. It supports CSV export and interactive charts.</p>
-  <p>🔧 Technologies: React, TypeScript, Python, CSV, HTML, CSS</p>
-  <iframe width="100%" height="250" src="https://www.youtube.com/embed/amTlxjbAVYc"></iframe>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="imgzipcsv" class="project-details">
-  <h2>🖼️ Image to ZIP + CSV Converter</h2>
-  <p>A simple web tool that allows users to upload multiple images and download them as a single compressed ZIP file. The ZIP also includes a results.csv file containing metadata such as filenames and indices.</p>
-  <p>✨ Features:</p>
-  <ul>
-    <li>Upload multiple images at once</li>
-    <li>Automatically generate results.csv with metadata</li>
-    <li>Download everything as a single deterministic ZIP file</li>
-    <li>Lightweight and easy to use</li>
-  </ul>
-  <p>🛠 Technologies: React (Frontend), Python (Backend), CSV, ZIP Compression</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="excel2sql" class="project-details">
-  <h2>📥 Excel to SQL Converter</h2>
-  <p>Import data from Excel File to Database Table in ASP.NET Core. Allows automatic conversion of Excel content into SQL-ready format and inserts into SQL Server database using ADO.NET.</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="wallet" class="project-details">
-  <h2>💰 Web3.js Wallet – ETH Send & Receive</h2>
-  <p>Ethereum wallet interface to send/receive ETH on testnet.</p>
-  <p>🛠 Technologies: Web3.js, JavaScript, HTML, Ethereum Testnet</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="tribechat" class="project-details">
-  <h2>💬 Tribe Chat App – Cross-Platform React Native</h2>
-  <p>A single-room chat app built with React Native and Expo, designed for smooth cross-platform messaging.</p>
-  <p>✨ Features:</p>
-  <ul>
-    <li>Grouped messages by date with avatars, names, and timestamps</li>
-    <li>Emoji reactions and edit indicators</li>
-    <li>Image attachments with preview modal</li>
-    <li>Infinite scroll for older messages</li>
-    <li>Offline persistence using async-storage</li>
-    <li>Efficient real-time updates via polling</li>
-  </ul>
-  <p>🛠 Technologies: React Native, Expo, Zustand, async-storage, JavaScript</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="itemsstore" class="project-details">
-  <h2>📦 Items-Store – Inventory Management System</h2>
-  <p>Simple inventory system built with ASP.NET, managing electronic items with CRUD operations and dynamic dashboard.</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="spa" class="project-details">
-  <h2>🧖‍♀️ SPA Center Website – React & Modern Frontend</h2>
-  <p>Fully responsive React website for a luxury spa center with booking, gallery, and testimonials.</p>
-  <p>✨ Key Features:</p>
-  <ul>
-    <li>Service descriptions with icons</li>
-    <li>Booking section with call-to-action</li>
-    <li>Image gallery for spa rooms & treatments</li>
-    <li>Customer testimonials and feedback</li>
-  </ul>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-<section id="rpsls" class="project-details">
-  <h2>🎮 RPSLS DApp — Rock Paper Scissors Lizard Spock</h2>
-
-  <p>
-    Decentralized Web3 game that allows two players to play
-    Rock–Paper–Scissors–Lizard–Spock fairly using a trustless
-    commit–reveal scheme on Ethereum.
-  </p>
-
-  <p> Key Features:</p>
-  <ul>
-    <li>Commit–Reveal scheme prevents cheating and front-running</li>
-    <li>On-chain stakes with automatic payout to the winner</li>
-    <li>MetaMask integration for secure wallet interaction</li>
-    <li>Timeout protection for both players</li>
-    <li>Deployed and tested on Sepolia Testnet</li>
-  </ul>
-
-  <p>
-    <strong>Tech Stack:</strong> React, Vite, ethers.js, Solidity, Ethereum (Sepolia)
-  </p>
-
-  <!-- Try Online Button -->
-  <a
-    href="https://vercel.com/lialyadams-projects/rpsls-dapp-lial"
-    target="_blank"
-    class="try-btn"
-  >
-     Try the Game Online
-  </a>
-
-  <br /><br />
-
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-
-<section id="dithering" class="project-details">
-  <h2>🖼️ Pattern Dithering with Parallel Processing</h2>
-  <p>Convert 8-bit grayscale images into 1-bit B/W using serial and parallel Pthreads implementations.</p>
-  <p>🔧 Implementation:</p>
-  <ul>
-    <li>Serial version: single thread processing</li>
-    <li>Parallel version: multiple threads using Pthreads library</li>
-  </ul>
-  <p>🕒 Performance Results:</p>
-  <ul>
-    <li>Serial time: 0.5432 s</li>
-    <li>1 thread: 0.55 s</li>
-    <li>2 threads: 0.31 s</li>
-    <li>4 threads: 0.18 s</li>
-    <li>8 threads: 0.11 s</li>
-  </ul>
-  <p>✅ Conclusion: Parallelizing with Pthreads significantly reduces processing time, optimal balance achieved with 4 threads.</p>
-  <a class="back-btn" onclick="goBack()">← Back to Projects</a>
-</section>
-<section id="skills" style="padding:4rem 2rem; max-width:1200px; margin:auto;">
-  <h2 style="text-align:center; margin-bottom:2rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:2rem;">Skills</h2>
-  
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2rem;">
-
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>💻 Frontend</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:90%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Available for new projects</span>
+      <h1>Full-stack &amp; AI development, <span class="accent">organized by discipline.</span></h1>
+      <p class="hero-sub">I'm Lial — I design and ship AI agents, web platforms, Web3 applications and internal tools. Below is every build, grouped by the kind of problem it solves.</p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-solid">Explore the work</a>
+        <a href="mailto:lialadamawad@gmail.com" class="btn btn-line">Start a project</a>
       </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">HTML, CSS, JavaScript, React, React Native, TailwindCSS</p>
+      <div class="stat-row" id="statRow"></div>
     </div>
+  </section>
 
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>⚙️ Backend</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:85%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">ASP.NET, C#, Entity Framework, SQL Server, REST APIs</p>
-    </div>
-
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>📝 Programming Languages</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:95%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">C#, Python, JavaScript, TypeScript, SQL</p>
-    </div>
-
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>☁️ Cloud & DevOps</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:75%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">Azure, CI/CD, GitHub Actions</p>
-    </div>
-
-    <div style="background:var(--card-bg); padding:1.5rem; border-radius:var(--radius); backdrop-filter: blur(8px);">
-      <h3>🛠️ Tools & Others</h3>
-      <div style="background: rgba(255,255,255,0.1); border-radius:0.5rem; height:10px; overflow:hidden; margin-top:0.5rem;">
-        <div style="width:80%; height:100%; background:var(--accent); transition: width 1.5s;"></div>
-      </div>
-      <p style="margin-top:0.5rem; font-size:0.9rem; color:#94a3b8;">SignalR, QGIS, NetLogo, Wireshark, AsyncStorage</p>
-    </div>
-
+  <!-- ================= CATEGORY NAV ================= -->
+  <div class="cat-nav-wrap">
+    <div class="wrap"><nav class="cat-nav" id="catNav"></nav></div>
   </div>
-</section>
 
+  <!-- ================= WORK (category sections) ================= -->
+  <div id="work"></div>
 
-<section id="contact">
-  <h2 style="text-align:center; margin-top:3rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:2rem;">Contact Me</h2>
-  <div class="contact">
-    <a href="mailto:lialadamawad@gmail.com">📧 Email</a>
-    <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank">💼 LinkedIn</a>
-    <a href="https://github.com/lialyAdam" target="_blank">🐙 GitHub</a>
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap">
+      <span class="section-tag">Capabilities</span>
+      <h2>Toolkit</h2>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= CONTACT ================= -->
+<div class="contact-band" id="contact">
+  <div class="contact-inner wrap">
+    <span class="section-tag">Get in touch</span>
+    <h2>Have a project in mind? Let's build it.</h2>
+    <p>Open to full-stack, AI agent and Web3 work — freelance or full-time. Reach out through any channel below.</p>
+    <div class="contact-links">
+      <a href="mailto:lialadamawad@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email
+      </a>
+      <a href="https://www.linkedin.com/in/lial-awwad-b72346374" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>LinkedIn
+      </a>
+      <a href="https://github.com/lialyAdam" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub
+      </a>
+    </div>
   </div>
-</section>
+</div>
 
-<footer>
-  <p>© 2025 Lial. Built with ❤️</p>
-</footer>
+<footer>© 2025 Lial Awwad. Built with intent.</footer>
 
 <script>
-  function showProject(id) {
-    document.getElementById('projects').style.display = 'none';
-    const details = document.querySelectorAll('.project-details');
-    details.forEach(d => d.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
-    window.scrollTo(0,0);
+/* ============ ICONS ============ */
+const catIcons = {
+  ai:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>',
+  web:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg>',
+  web3:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="9" width="8" height="6" rx="2"/><rect x="13" y="9" width="8" height="6" rx="2"/><path d="M11 12h2"/></svg>',
+  tool:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.3-.7-.7-2.3 2.1-2.1z"/></svg>',
+  mobile:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>'
+};
+const gh = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>';
+const ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+const play = '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22"/><path d="M19 15l16 9-16 9V15z"/></svg>';
+
+/* ============ CATEGORY META ============ */
+const categories = [
+  { key:'ai', label:'AI &amp; Agents', desc:'Agents and services built around LLM reasoning — support automation, scoring, document analysis and content evaluation.' },
+  { key:'web', label:'Web Applications', desc:'Full-stack web platforms, from marketing sites to dashboards, spanning React, ASP.NET and vanilla stacks.' },
+  { key:'web3', label:'Web3 &amp; Blockchain', desc:'Decentralized applications and wallet tooling built on Ethereum with Solidity and ethers.js.' },
+  { key:'mobile', label:'Mobile', desc:'Cross-platform mobile experiences built with React Native and Expo.' },
+  { key:'tool', label:'Tools &amp; Utilities', desc:'Focused developer and data tools that solve one problem well — conversion, benchmarking, automation.' },
+];
+
+/* ============ PROJECT DATA ============ */
+const projects = [
+  { id:'lialstore', cat:'ai', title:'LIAL Store — AI Support Agent',
+    desc:'Bilingual AI customer-support agent (Arabic / English / mixed) with secure access to business tools for order tracking, cancellations, refunds and escalation.',
+    stack:['GPT-4','Tool calling','Arabic NLP'],
+    more:['Order tracking, cancellation &amp; refund handling','Store-policy Q&amp;A and human escalation','Secure, scoped access to business tools'],
+    video:'lFC79LBct3Y', github:'https://github.com/lialyAdam/Lial-store-agent', live:'https://youtu.be/lFC79LBct3Y', liveLabel:'Watch demo' },
+
+  { id:'deerbalak', cat:'ai', title:'Deer Balak Alena — AI Emergency Management',
+    desc:'Real-time emergency alert platform for road closures and hazards, with an AI credibility model that scores users and posts to fight misinformation.',
+    stack:['AI scoring','Admin dashboard','Trust &amp; safety'],
+    more:['Trained a credibility-scoring model for users and reports','Admin dashboard to review, accept or reject submissions','Username checks against a restricted-account database'],
+    video:'uAzaN0TDZ4Q', github:'https://github.com/lialyAdam/DeerBalak' },
+
+  { id:'ainame', cat:'ai', title:'AI-Powered Name Validation Service',
+    desc:'GPT-4-backed service that scores how likely a submitted name is genuine, with a plain-language explanation and an ID-verification fallback.',
+    stack:['GPT-4','Scoring engine','Trust pipeline'],
+    more:['0–100 authenticity score with a written justification','Simplified rejection messages for end users','Flags low scores for official ID verification'],
+    video:'xrfVzR8u0sM', github:'https://github.com/lialyAdam/AI-Powered-Name-Validation-Service/tree/main' },
+
+  { id:'contractanalyzer', cat:'ai', title:'AI-Powered Contract Analyzer',
+    desc:'Streamlit app for uploading PDF contracts and getting instant AI analysis — key clauses extracted, risks flagged, unfair terms highlighted.',
+    stack:['Streamlit','GPT-4','pdfplumber','ReportLab'],
+    more:['Uploads contracts up to 200MB','Extracts clauses and flags unfair or non-compliant terms','Exports a professional analysis report as PDF'],
+    video:'5YZwZbyPTow', github:'https://github.com/lialyAdam/-Contract-Analyzer' },
+
+  { id:'ezzytext', cat:'ai', title:'EzzyText — Text Evaluation Dashboard',
+    desc:'Web app that screens text for fake news and spam signals, returning accuracy and credibility scores through an interactive dashboard.',
+    stack:['Flask','OpenAI API','TailwindCSS'],
+    more:['Fake-news detection and spam-likelihood scoring','Accuracy &amp; reliability scores with interactive visuals','Lightweight Flask backend, single-page frontend'],
+    video:'-MzB2ANeWA8', github:'https://github.com/lialyAdam/EzzyText-Detect-Fake-News-Spam-Word-' },
+
+  { id:'zivora', cat:'web', title:'Zivora — Real Estate Website',
+    desc:'Modern real-estate site showcasing villas and homes across the West Bank, built around elegant, nature-inspired presentation.',
+    stack:['HTML','CSS','JavaScript'],
+    video:'VrkQFGOcGfY', github:'https://github.com/lialyAdam/ZIVORA', live:'https://zivora-one.vercel.app/', liveLabel:'Live site' },
+
+  { id:'berrylicious', cat:'web', title:'Berrylicious — Dessert Shop',
+    desc:'Dessert and cake-shop storefront with a clean, responsive layout and galleries built to sell the product visually.',
+    stack:['HTML','CSS','JavaScript'],
+    video:'-2enCqUPK00', github:'https://github.com/lialyAdam/Berrylicious', live:'https://berrylicious-ruddy.vercel.app/', liveLabel:'Live site' },
+
+  { id:'ecommerce', cat:'web', title:'E-Commerce Clothing Store',
+    desc:'Online clothing store with product browsing, filtering and a secure admin panel for catalog management.',
+    stack:['ASP.NET','SQL Server','JavaScript'],
+    video:'DeVq1Ee6DE4', github:'https://github.com/lialyAdam/Ecommerce' },
+
+  { id:'supplydash', cat:'web', title:'SupplySight — Inventory Dashboard',
+    desc:'Take-home challenge: a daily inventory dashboard mirroring real supply-chain workflows, with KPI cards and live filters.',
+    stack:['React','Apollo GraphQL','Recharts'],
+    more:['Mock GraphQL server with queries &amp; mutations','KPI cards and trend charts built with Recharts','Live filters, pagination and side-drawer product detail'],
+    video:'gdK9tM_TgQE', github:'https://github.com/lialyAdam/lial-dashboard' },
+
+  { id:'tracevision', cat:'web', title:'TraceVision Pro 4.0',
+    desc:'Real-time compute-traces tracker monitoring speed and odometer readings, with CSV export and interactive charts.',
+    stack:['React','TypeScript','Python'],
+    video:'amTlxjbAVYc', github:'https://github.com/lialyAdam/compute-traces-dashboard' },
+
+  { id:'itemsstore', cat:'web', title:'Items-Store — Inventory Management',
+    desc:'ASP.NET inventory system for electronics with full CRUD operations and a dynamic management dashboard.',
+    stack:['ASP.NET','C#','SQL Server'],
+    video:'uFazzxp0SAY', github:'https://github.com/lialyAdam/Item-Management-Dashboard' },
+
+  { id:'spa', cat:'web', title:'SPA Center Website',
+    desc:'Responsive React site for a luxury spa, with service breakdowns, a booking call-to-action, gallery and testimonials.',
+    stack:['React','CSS'],
+    video:'zt80NHNKMJQ', github:'https://github.com/lialyAdam/Spa_Project' },
+
+  { id:'tribechat', cat:'mobile', title:'Tribe Chat — React Native',
+    desc:'Cross-platform single-room chat app with grouped messages, reactions and offline persistence.',
+    stack:['React Native','Expo','Zustand'],
+    more:['Grouped messages by date with avatars &amp; timestamps','Emoji reactions, edit indicators, image previews','Offline persistence via async-storage, real-time polling'],
+    video:'cJfGTUhtT6A', github:'https://github.com/lialyAdam/tribe-chat-app' },
+
+  { id:'wallet', cat:'web3', title:'Web3.js Wallet',
+    desc:'Ethereum wallet interface for sending and receiving ETH on a public testnet.',
+    stack:['Web3.js','JavaScript','Ethereum'],
+    video:'_Yrb1nkhnfc', github:'https://github.com/lialyAdam/-EmploiToday-defiguard-Wallet' },
+
+  { id:'rpsls', cat:'web3', title:'RPSLS DApp — Web3 Game',
+    desc:'Decentralized Rock-Paper-Scissors-Lizard-Spock using a trustless commit-reveal scheme, deployed on Sepolia.',
+    stack:['Solidity','ethers.js','React','Vite'],
+    more:['Commit–reveal scheme prevents cheating &amp; front-running','On-chain stakes with automatic payout to the winner','MetaMask integration and timeout protection for both players'],
+    live:'https://vercel.com/lialyadams-projects/rpsls-dapp-lial', liveLabel:'Try online' },
+
+  { id:'imgzipcsv', cat:'tool', title:'Image to ZIP + CSV Converter',
+    desc:'Upload a batch of images and download one ZIP archive with an auto-generated results.csv of metadata.',
+    stack:['React','Python','ZIP'],
+    github:'https://github.com/lialyAdam/image-zip-csv', extraLink:'https://github.com/DreamLayer-AI/DreamLayer/pull/93', extraLinkLabel:'Pull request' },
+
+  { id:'excel2sql', cat:'tool', title:'Excel to SQL Converter',
+    desc:'ASP.NET Core tool that imports Excel data and converts it into SQL-ready inserts via ADO.NET.',
+    stack:['ASP.NET Core','ADO.NET','SQL Server'],
+    video:'Ernjn_1Z8qI', github:'https://github.com/lialyAdam/ExcelToSQLConverter' },
+
+  { id:'dithering', cat:'tool', title:'Pattern Dithering, Parallelized',
+    desc:'Converts 8-bit grayscale images to 1-bit B/W using serial and Pthreads-parallel implementations, benchmarked across thread counts.',
+    stack:['C','Pthreads'],
+    more:['Serial baseline: 0.5432s','1 / 2 / 4 / 8 threads: 0.55s / 0.31s / 0.18s / 0.11s','Best balance of speed vs. overhead reached at 4 threads'],
+    github:'https://github.com/lialyAdam/parallel' },
+];
+
+/* ============ HELPERS ============ */
+function videoBlock(p){
+  if(p.video){
+    return `<div class="video-frame" data-video="${p.video}">
+        <img src="https://img.youtube.com/vi/${p.video}/hqdefault.jpg" alt="${p.title} preview" loading="lazy">
+        <button class="play-btn" aria-label="Play demo video">${play}</button>
+      </div>`;
   }
-  function goBack() {
-    const details = document.querySelectorAll('.project-details');
-    details.forEach(d => d.style.display = 'none');
-    document.getElementById('projects').style.display = 'grid';
-    window.scrollTo(0,0);
-  }
+  return `<div class="video-frame"><div class="cover-fallback">${p.title.trim().charAt(0)}</div></div>`;
+}
+function moreBlock(p){
+  if(!p.more) return '';
+  return `<details class="more"><summary>More detail</summary><ul>${p.more.map(m=>`<li>${m}</li>`).join('')}</ul></details>`;
+}
+function actionsBlock(p){
+  let out = '<div class="card-actions">';
+  if(p.github) out += `<a href="${p.github}" target="_blank" rel="noopener">${gh}GitHub</a>`;
+  if(p.extraLink) out += `<a href="${p.extraLink}" target="_blank" rel="noopener">${ext}${p.extraLinkLabel||'Link'}</a>`;
+  if(p.live) out += `<a class="live" href="${p.live}" target="_blank" rel="noopener">${ext}${p.liveLabel||'Live site'}</a>`;
+  out += '</div>';
+  return out;
+}
+function cardHTML(p){
+  return `<article class="card">
+    ${videoBlock(p)}
+    <div class="card-body">
+      <h3>${p.title}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="stack-row">${p.stack.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
+      ${moreBlock(p)}
+      ${actionsBlock(p)}
+    </div>
+  </article>`;
+}
+
+/* ============ RENDER CATEGORY SECTIONS ============ */
+const workEl = document.getElementById('work');
+workEl.innerHTML = categories.map(c=>{
+  const items = projects.filter(p=>p.cat===c.key);
+  if(!items.length) return '';
+  return `<section class="category-section" id="cat-${c.key}" data-cat="${c.key}">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-icon-box">${catIcons[c.key]}</div>
+        <div>
+          <h2>${c.label} <span style="color:var(--ink-faint);font-weight:600;font-size:.9rem;">(${items.length})</span></h2>
+          <p>${c.desc}</p>
+        </div>
+      </div>
+      <div class="grid">${items.map(cardHTML).join('')}</div>
+    </div>
+  </section>`;
+}).join('');
+
+/* lazy-load youtube iframe on click */
+workEl.addEventListener('click', e=>{
+  const btn = e.target.closest('.play-btn');
+  if(!btn) return;
+  const frame = btn.closest('.video-frame');
+  const id = frame.dataset.video;
+  frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" title="Project demo video" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>`;
+});
+
+/* ============ HERO STATS ============ */
+document.getElementById('statRow').innerHTML = categories.map(c=>{
+  const n = projects.filter(p=>p.cat===c.key).length;
+  return `<div class="stat"><b>${n}</b><span>${c.label.replace('&amp;','&')}</span></div>`;
+}).join('');
+
+/* ============ CATEGORY NAV + SCROLLSPY ============ */
+const catNav = document.getElementById('catNav');
+catNav.innerHTML = categories.map(c=>{
+  const n = projects.filter(p=>p.cat===c.key).length;
+  return `<a href="#cat-${c.key}" class="cat-pill" data-cat="${c.key}">${c.label.replace('&amp;','&')} <span class="count">${n}</span></a>`;
+}).join('');
+
+const sections = Array.from(document.querySelectorAll('.category-section'));
+const pills = Array.from(document.querySelectorAll('.cat-pill'));
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      pills.forEach(p=>p.classList.toggle('active', p.dataset.cat === entry.target.dataset.cat));
+    }
+  });
+}, { rootMargin: '-140px 0px -70% 0px', threshold: 0 });
+sections.forEach(s=>io.observe(s));
+
+/* ============ SKILLS ============ */
+const skillGroups = [
+  { title:'Frontend', icon:'web', tags:['HTML','CSS','JavaScript','React','React Native','TailwindCSS'] },
+  { title:'Backend', icon:'tool', tags:['ASP.NET','C#','Entity Framework','SQL Server','REST APIs'] },
+  { title:'Languages', icon:'ai', tags:['C#','Python','JavaScript','TypeScript','SQL'] },
+  { title:'Cloud &amp; DevOps', icon:'web3', tags:['Azure','CI/CD','GitHub Actions'] },
+  { title:'Tools &amp; Others', icon:'mobile', tags:['SignalR','QGIS','NetLogo','Wireshark','AsyncStorage'] },
+];
+document.getElementById('skillsGrid').innerHTML = skillGroups.map(g=>`
+  <div class="skill-card">
+    <h3>${catIcons[g.icon]}${g.title}</h3>
+    <div class="tag-cloud">${g.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+  </div>
+`).join('');
+
+/* ============ MOBILE MENU ============ */
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+  navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+}));
 </script>
 </body>
 </html>
